@@ -1,0 +1,257 @@
+'use client'
+import React, { useState, useEffect } from 'react';
+import { ExternalLink, Github, Eye } from 'lucide-react';
+
+interface Technology {
+  name: string;
+  icon: string;
+  color: string;
+}
+
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  technologies: Technology[];
+  liveLink: string;
+  githubLink: string;
+  category: string;
+}
+
+const ProjectsPage: React.FC = () => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const projects: Project[] = [
+    {
+      id: 1,
+      title: "MergeX",
+      description: "MergeX is an innovative applicant tracking system (ATS) set to transform the recruitment landscape.",
+      image: "/images/projects/mergex.jpg",
+      technologies: [
+        { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", color: "#61DAFB" },
+        { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
+        { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", color: "#47A248" },
+        { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", color: "#3178C6" },
+        { name: "Tailwind", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg", color: "#06B6D4" }
+      ],
+      liveLink: "https://mergex-demo.com",
+      githubLink: "https://github.com/yourusername/mergex",
+      category: "Web Application"
+    },
+    {
+      id: 2,
+      title: "Vertex Game Store",
+      description: "Vertex is a comprehensive web-based platform designed for selling and managing video games.",
+      image: "/images/projects/vertex.jpg",
+      technologies: [
+        { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", color: "#61DAFB" },
+        { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
+        { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", color: "#000000" },
+        { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg", color: "#336791" },
+        { name: "Stripe", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/stripe/stripe-original.svg", color: "#008CDD" }
+      ],
+      liveLink: "https://vertex-games.com",
+      githubLink: "https://github.com/yourusername/vertex",
+      category: "E-commerce"
+    },
+    {
+      id: 3,
+      title: "Pramuka Store",
+      description: "An E-commerce website with stock management, order tracking, cart, and online payment capabilities.",
+      image: "/images/projects/pramuka.jpg",
+      technologies: [
+        { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", color: "#61DAFB" },
+        { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
+        { name: "Express", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg", color: "#000000" },
+        { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", color: "#4479A1" },
+        { name: "PayPal", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/paypal/paypal-original.svg", color: "#00457C" }
+      ],
+      liveLink: "https://pramuka-store.com",
+      githubLink: "https://github.com/yourusername/pramuka",
+      category: "E-commerce"
+    },
+    {
+      id: 4,
+      title: "RevoClean",
+      description: "RevoClean is an automated wastewater purification unit, a hardware project that uses the ESP32-E.",
+      image: "/images/projects/revoclean.jpg",
+      technologies: [
+        { name: "Arduino", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg", color: "#00979D" },
+        { name: "C++", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg", color: "#00599C" },
+        { name: "IoT", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg", color: "#FF9900" },
+        { name: "ESP32", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg", color: "#FF6B35" },
+        { name: "Sensors", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg", color: "#A22846" }
+      ],
+      liveLink: "https://revoclean-demo.com",
+      githubLink: "https://github.com/yourusername/revoclean",
+      category: "Hardware/IoT"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-black text-white py-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header Section */}
+        <div className={`text-center mb-20 transform transition-all duration-1200 ease-out ${
+          isVisible ? 'translate-y-0 opacity-100' : '-translate-y-16 opacity-0'
+        }`}>
+          <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+            My <span className="text-transparent bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 bg-clip-text">Projects</span>
+          </h2>
+          <div className={`w-24 h-1 bg-gradient-to-r from-purple-400 to-purple-800 mx-auto rounded-full transform transition-all duration-1000 delay-300 ${
+            isVisible ? 'scale-x-100' : 'scale-x-0'
+          }`}></div>
+          <p className="text-gray-400 mt-6 text-lg max-w-2xl mx-auto">
+            Explore my latest projects showcasing modern web development, mobile applications, and innovative solutions.
+          </p>
+        </div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {projects.map((project, index) => (
+            <div
+              key={project.id}
+              className={`group relative transform transition-all duration-1000 ease-out ${
+                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+              }`}
+              style={{ transitionDelay: `${400 + index * 200}ms` }}
+              onMouseEnter={() => setHoveredCard(project.id)}
+              onMouseLeave={() => setHoveredCard(null)}
+            >
+              {/* Project Card */}
+              <div className="relative bg-gradient-to-br from-gray-900/80 to-gray-800/60 backdrop-blur-lg rounded-2xl border border-gray-700/50 overflow-hidden transition-all duration-500 group-hover:transform group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-purple-500/20 group-hover:border-purple-500/40">
+                
+                {/* Project Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = `https://via.placeholder.com/400x200/1f2937/9ca3af?text=${project.title}`;
+                    }}
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Category Badge */}
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-purple-600/80 text-white text-xs font-medium rounded-full backdrop-blur-sm">
+                      {project.category}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Project Content */}
+                <div className="p-6">
+                  {/* Project Title */}
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-purple-300 transition-colors duration-300">
+                    {project.title}
+                  </h3>
+
+                  {/* Project Description */}
+                  <p className="text-gray-300 text-sm leading-relaxed mb-4 group-hover:text-gray-200 transition-colors duration-300">
+                    {project.description}
+                  </p>
+
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.technologies.map((tech, techIndex) => (
+                      <div
+                        key={techIndex}
+                        className="flex items-center gap-1 px-2 py-1 bg-gray-800/50 border border-gray-600/30 rounded-lg hover:bg-gray-700/50 hover:border-gray-500/50 transition-all duration-300"
+                      >
+                        <img
+                          src={tech.icon}
+                          alt={tech.name}
+                          className="w-4 h-4 object-contain"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                          }}
+                        />
+                        <span className="text-xs text-gray-400">{tech.name}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex gap-3">
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-600/50 group/btn"
+                    >
+                      <Eye size={16} className="group-hover/btn:scale-110 transition-transform duration-300" />
+                      <span className="text-sm font-medium">View</span>
+                    </a>
+                    <a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center p-2 border border-gray-600 hover:border-purple-500 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-purple-600/10 group/btn"
+                    >
+                      <Github size={16} className="text-gray-400 group-hover/btn:text-purple-400 transition-colors duration-300" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Hover Glow Effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none">
+                  <div className="absolute -inset-2 bg-gradient-to-r from-purple-400/10 via-purple-600/15 to-purple-800/10 blur-2xl rounded-2xl"></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Call to Action */}
+        <div className={`text-center mt-20 transform transition-all duration-1000 ease-out ${
+          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+        }`} style={{ transitionDelay: '1200ms' }}>
+          <p className="text-gray-400 mb-8 text-lg max-w-2xl mx-auto">
+            Interested in collaborating or want to see more of my work?
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/contact"
+              className="group relative px-8 py-4 bg-purple-600 text-white rounded-full font-semibold text-lg overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-purple-600/40 hover:bg-purple-700 transform hover:-translate-y-1"
+            >
+              <div className="relative flex items-center gap-3 z-10">
+                <span>Get In Touch</span>
+                <ExternalLink size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              </div>
+            </a>
+            <a
+              href="https://github.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group px-8 py-4 border border-purple-600 text-purple-400 hover:text-white hover:bg-purple-600 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-600/30"
+            >
+              <div className="flex items-center gap-3">
+                <Github size={20} />
+                <span>View All Projects</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProjectsPage;
