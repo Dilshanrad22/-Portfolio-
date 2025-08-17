@@ -33,9 +33,9 @@ const ProjectsPage: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "MergeX",
-      description: "MergeX is an innovative applicant tracking system (ATS) set to transform the recruitment landscape.",
-      image: "/images/projects/mergex.jpg",
+      title: "Travelwish",
+      description: "Travelwish  is an innovative applicant tracking system (ATS) set to transform the recruitment landscape.",
+      image: "/images/travelwish.png",
       technologies: [
         { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", color: "#61DAFB" },
         { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
@@ -49,9 +49,9 @@ const ProjectsPage: React.FC = () => {
     },
     {
       id: 2,
-      title: "Vertex Game Store",
-      description: "Vertex is a comprehensive web-based platform designed for selling and managing video games.",
-      image: "/images/projects/vertex.jpg",
+      title: "Travelwish web app",
+      description: "Travelwish web app is a comprehensive web-based platform designed for selling and managing video games.",
+      image: "/images/",
       technologies: [
         { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", color: "#61DAFB" },
         { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
@@ -65,9 +65,9 @@ const ProjectsPage: React.FC = () => {
     },
     {
       id: 3,
-      title: "Pramuka Store",
-      description: "An E-commerce website with stock management, order tracking, cart, and online payment capabilities.",
-      image: "/images/projects/pramuka.jpg",
+      title: "Bobalicious",
+      description: "An my first project for bobble tea shop",
+      image: "/images/bobalicious.jpg",
       technologies: [
         { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", color: "#61DAFB" },
         { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
@@ -77,13 +77,13 @@ const ProjectsPage: React.FC = () => {
       ],
       liveLink: "https://pramuka-store.com",
       githubLink: "https://github.com/yourusername/pramuka",
-      category: "E-commerce"
+      category: "web application"
     },
     {
       id: 4,
-      title: "RevoClean",
-      description: "RevoClean is an automated wastewater purification unit, a hardware project that uses the ESP32-E.",
-      image: "/images/projects/revoclean.jpg",
+      title: "Baby Drive",
+      description: "Baby Driver is game for littele children for identtfy some things, a hardware project that uses the ESP32-E.",
+      image: "/images/babydrive.jpg",
       technologies: [
         { name: "Arduino", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg", color: "#00979D" },
         { name: "C++", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg", color: "#00599C" },
@@ -92,7 +92,7 @@ const ProjectsPage: React.FC = () => {
         { name: "Sensors", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg", color: "#A22846" }
       ],
       liveLink: "https://revoclean-demo.com",
-      githubLink: "https://github.com/yourusername/revoclean",
+      githubLink: "https://lnkd.in/gBKMRVZz",
       category: "Hardware/IoT"
     }
   ];
@@ -220,37 +220,15 @@ const ProjectsPage: React.FC = () => {
         <div className={`text-center mt-20 transform transition-all duration-1000 ease-out ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
         }`} style={{ transitionDelay: '1200ms' }}>
-          <p className="text-gray-400 mb-8 text-lg max-w-2xl mx-auto">
-            Interested in collaborating or want to see more of my work?
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/contact"
-              className="group relative px-8 py-4 bg-purple-600 text-white rounded-full font-semibold text-lg overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-purple-600/40 hover:bg-purple-700 transform hover:-translate-y-1"
-            >
-              <div className="relative flex items-center gap-3 z-10">
-                <span>Get In Touch</span>
-                <ExternalLink size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-              </div>
-            </a>
-            <a
-              href="https://github.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group px-8 py-4 border border-purple-600 text-purple-400 hover:text-white hover:bg-purple-600 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-600/30"
-            >
-              <div className="flex items-center gap-3">
-                <Github size={20} />
-                <span>View All Projects</span>
-              </div>
-            </a>
+          
+              
+              
+            
+            
           </div>
         </div>
       </div>
-    </div>
+    
   );
 };
 

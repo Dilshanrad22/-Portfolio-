@@ -11,7 +11,7 @@ export default function Header() {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0)
   const [titleVisible, setTitleVisible] = useState(true)
 
-  const navItems = ['Home', 'Services', 'About', 'Skills', 'Contact']
+  const navItems = ['Home', 'Services', 'Resume', 'My selfy', 'Contact']
   const titles = [
     'Full stack developer',
     'IT undergraduate', 
