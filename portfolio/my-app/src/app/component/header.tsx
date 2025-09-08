@@ -5,7 +5,6 @@ import Image from 'next/image'
 
 export default function Header() {
   const [isVisible, setIsVisible] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('Home')
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0)
@@ -19,31 +18,34 @@ export default function Header() {
     'Sports enthusiast'
   ]
 
-  useEffect(() => {
-    setIsVisible(true)
-    
-    // Title rotation animation
-    const titleInterval = setInterval(() => {
-      setTitleVisible(false) // Fade out
-      
-      setTimeout(() => {
-        setCurrentTitleIndex((prev) => (prev + 1) % titles.length) // Change title
-        setTitleVisible(true) // Fade in
-      }, 300)
-      
-    }, 3000) // Change every 3 seconds
-    
-    // Handle scroll effect for navbar
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+  // Function to handle CV download
+  const handleDownloadCV = () => {
+    const link = document.createElement('a')
+    link.href = '/cv/dulanjana_dilshan.pdf' // Update this path to match your CV file location
+    link.download = 'dulanjana_dilshan.pdf' // The name for the downloaded file
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
 
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      clearInterval(titleInterval)
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+useEffect(() => {
+  setIsVisible(true)
+
+  // Title rotation animation
+  const titleInterval = setInterval(() => {
+    setTitleVisible(false) // Fade out
+    
+    setTimeout(() => {
+      setCurrentTitleIndex((prev) => (prev + 1) % titles.length) // Change title
+      setTitleVisible(true) // Fade in
+    }, 300)
+    
+  }, 3000) // Change every 3 seconds
+  
+  return () => {
+    clearInterval(titleInterval)
+  }
+}, [titles.length])  // ✅ fixed dependency
 
   return (
     <>
@@ -169,7 +171,7 @@ export default function Header() {
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
               }`}>
                 <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 leading-tight">
-                  <span className="block text-white">Hello I'm</span>
+                  <span className="block text-white">Hello I&apos;m</span>
                   <span className="block text-transparent bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 bg-clip-text animate-pulse">
                     DULANJANA DILSHAN
                   </span>
@@ -181,7 +183,7 @@ export default function Header() {
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
               }`}>
                 <p className="text-xl lg:text-2xl mb-6 text-gray-300">
-                  And I'm a{' '}
+                  And I&apos;m a{' '}
                   <span 
                     className={`text-purple-400 font-semibold transition-all duration-300 inline-block ${
                       titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
@@ -232,7 +234,10 @@ export default function Header() {
               <div className={`transform transition-all duration-1000 delay-900 ${
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
               }`}>
-                <button className="group relative px-8 py-4 bg-purple-600 text-white rounded-full font-semibold text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-600/50 hover:bg-purple-700">
+                <button 
+                  onClick={handleDownloadCV}
+                  className="group relative px-8 py-4 bg-purple-600 text-white rounded-full font-semibold text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-600/50 hover:bg-purple-700"
+                >
                   <div className="relative flex items-center gap-2 z-10">
                     <Download size={20} />
                     Download CV

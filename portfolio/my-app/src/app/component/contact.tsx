@@ -81,7 +81,7 @@ const ContactPage: React.FC = () => {
         phone: '',
         message: ''
       });
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -112,14 +112,14 @@ const ContactPage: React.FC = () => {
           isVisible ? 'translate-y-0 opacity-100' : '-translate-y-16 opacity-0'
         }`}>
           <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-            Let's <span className="text-transparent bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 bg-clip-text">work together</span>
+            Let&apos;s <span className="text-transparent bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 bg-clip-text">work together</span>
           </h1>
           <div className={`w-24 h-1 bg-gradient-to-r from-purple-400 to-purple-800 mx-auto rounded-full transform transition-all duration-1000 delay-300 ${
             isVisible ? 'scale-x-100' : 'scale-x-0'
           }`}></div>
           <p className="text-gray-400 mt-6 text-lg max-w-4xl mx-auto leading-relaxed">
-            Whether you need a website, mobile app, or a striking design, I'm ready to turn your ideas into reality. 
-            Let's collaborate and create something exceptional together. I look forward to connecting with you!
+            Whether you need a website, mobile app, or a striking design, I&apos;m ready to turn your ideas into reality. 
+            Let&apos;s collaborate and create something exceptional together. I look forward to connecting with you!
           </p>
         </div>
 
@@ -256,7 +256,7 @@ const ContactPage: React.FC = () => {
               {submitStatus === 'success' && (
                 <div className="p-4 bg-green-600/20 border border-green-500/50 rounded-lg flex items-center gap-3">
                   <CheckCircle size={20} className="text-green-400" />
-                  <span className="text-green-300">Message sent successfully! I'll get back to you soon.</span>
+                  <span className="text-green-300">Message sent successfully! I&apos;ll get back to you soon.</span> {/* ✅ FIXED apostrophe */}
                 </div>
               )}
 
@@ -279,10 +279,10 @@ const ContactPage: React.FC = () => {
               <div>
                 <h3 className="text-white font-semibold mb-1">Phone</h3>
                 <a 
-                  href="tel:+94756722066" 
+                  href="tel:+94717646067" 
                   className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
                 >
-                  (+94) 75 672 2066
+                  (+94) 71 764 6067
                 </a>
               </div>
             </div>
@@ -295,10 +295,10 @@ const ContactPage: React.FC = () => {
               <div>
                 <h3 className="text-white font-semibold mb-1">Email</h3>
                 <a 
-                  href="mailto:kavindrikapiyushan@gmail.com" 
+                  href="mailto:dulanjanassd@gmail.com" 
                   className="text-gray-300 hover:text-purple-400 transition-colors duration-300 break-all"
                 >
-                  kavindrikapiyushan@gmail.com
+                  Dulanjanassd@gmail.com
                 </a>
               </div>
             </div>
@@ -311,9 +311,9 @@ const ContactPage: React.FC = () => {
               <div>
                 <h3 className="text-white font-semibold mb-1">Address</h3>
                 <p className="text-gray-300 leading-relaxed">
-                  No 82/32, Kheels Housing Scheme,<br />
-                  Udugampola, Gampaha,<br />
-                  Sri Lanka
+                  8/A,
+                  Ayurwedha Road,
+                  Agarawala, Aparakka.
                 </p>
               </div>
             </div>

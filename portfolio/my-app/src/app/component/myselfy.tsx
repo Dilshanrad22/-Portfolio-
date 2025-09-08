@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Play, Pause, Heart, Camera } from 'lucide-react';
+import Image from "next/image";
 
 interface Photo {
   id: number;
@@ -16,6 +17,22 @@ const MyselfPage: React.FC = () => {
   const [isAutoPlay, setIsAutoPlay] = useState<boolean>(true);
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
+  // Photos array should be defined before useEffect
+  const photos: Photo[] = [
+    { id: 1, src: "/images/07.jpeg", title: "Team Spirit", description: "With my amazing teammates during our university sports event", category: "Sports" },
+    { id: 2, src: "/images/01.jpeg", title: "Achievement Moment", description: "Receiving recognition for academic excellence and leadership", category: "Academic" },
+    { id: 3, src: "/images/02.jpeg", title: "Football Passion", description: "Mora Football Alumni Celebration - Living my passion for the game", category: "Sports" },
+    { id: 4, src: "/images/03.jpeg", title: "Friendship Goals", description: "Quality time with my closest friends and teammates", category: "Personal" },
+    { id: 5, src: "/images/04.jpeg", title: "Mora Soccer Reunion", description: "Reunion with fellow soccer enthusiasts - memories that last forever", category: "Sports" },
+    { id: 6, src: "/images/05.jpeg", title: "Adventure Time", description: "Exploring nature and embracing outdoor challenges", category: "Adventure" },
+    { id: 7, src: "/images/06.jpeg", title: "Milestone Moment", description: "Celebrating educational achievements with pride and joy", category: "Academic" },
+    { id: 8, src: "/images/08.jpeg", title: "Milestone Moment", description: "", category: "" },
+    { id: 9, src: "/images/09.jpeg", title: "Milestone Moment", description: "", category: "" },
+    { id: 10, src: "/images/10.jpeg", title: "Milestone Moment", description: "", category: "" },
+    { id: 11, src: "/images/11.jpeg", title: "Milestone Moment", description: "", category: "" },
+    { id: 12, src: "/images/12.jpeg", title: "Milestone Moment", description: "", category: "" },
+  ];
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
@@ -26,92 +43,17 @@ const MyselfPage: React.FC = () => {
   // Auto-play slideshow
   useEffect(() => {
     if (!isAutoPlay || isHovered) return;
-    
+
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % photos.length);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlay, isHovered]);
+  }, [isAutoPlay, isHovered, photos.length]); // ✅ fixed dependency
 
-  const photos: Photo[] = [
-    {
-      id: 1,
-      src: "/images/myself/team-photo-1.jpg",
-      title: "Team Spirit",
-      description: "With my amazing teammates during our university sports event",
-      category: "Sports"
-    },
-    {
-      id: 2,
-      src: "/images/myself/awards-ceremony.jpg", 
-      title: "Achievement Moment",
-      description: "Receiving recognition for academic excellence and leadership",
-      category: "Academic"
-    },
-    {
-      id: 3,
-      src: "/images/myself/football-team.jpg",
-      title: "Football Passion",
-      description: "Mora Football Alumni Celebration - Living my passion for the game",
-      category: "Sports"
-    },
-    {
-      id: 4,
-      src: "/images/myself/friends-group.jpg",
-      title: "Friendship Goals",
-      description: "Quality time with my closest friends and teammates",
-      category: "Personal"
-    },
-    {
-      id: 5,
-      src: "/images/myself/soccer-reunion.jpg",
-      title: "Mora Soccer Reunion",
-      description: "Reunion with fellow soccer enthusiasts - memories that last forever",
-      category: "Sports"
-    },
-    {
-      id: 6,
-      src: "/images/myself/outdoor-adventure.jpg",
-      title: "Adventure Time",
-      description: "Exploring nature and embracing outdoor challenges",
-      category: "Adventure"
-    },
-    {
-      id: 7,
-      src: "/images/myself/graduation-day.jpg",
-      title: "Milestone Moment",
-      description: "Celebrating educational achievements with pride and joy",
-      category: "Academic"
-    },
-      {
-      id: 8,
-      src: "/images/myself/graduation-day.jpg",
-      title: "Milestone Moment",
-      description: "Celebrating educational achievements with pride and joy",
-      category: "Academic"
-    }
-    ,
-      {
-      id: 9,
-      src: "/images/myself/graduation-day.jpg",
-      title: "Milestone Moment",
-      description: "Celebrating educational achievements with pride and joy",
-      category: "Academic"
-    }
-  ];
-
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % photos.length);
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + photos.length) % photos.length);
-  };
-
-  const goToImage = (index: number) => {
-    setCurrentImageIndex(index);
-  };
+  const nextImage = () => setCurrentImageIndex((prev) => (prev + 1) % photos.length);
+  const prevImage = () => setCurrentImageIndex((prev) => (prev - 1 + photos.length) % photos.length);
+  const goToImage = (index: number) => setCurrentImageIndex(index);
 
   return (
     <div className="min-h-screen bg-black text-white py-20 px-6 overflow-hidden">
@@ -144,7 +86,7 @@ const MyselfPage: React.FC = () => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            {/* Background Images (Previous/Next) */}
+            {/* Background Images */}
             <div className="absolute inset-0 flex items-center justify-center">
               {photos.map((photo, index) => {
                 let position = index - currentImageIndex;
@@ -173,14 +115,12 @@ const MyselfPage: React.FC = () => {
                         ? 'border-purple-500 shadow-2xl shadow-purple-500/30' 
                         : 'border-gray-600/50 hover:border-purple-400/70'
                     }`}>
-                      <img
+                      <Image
                         src={photo.src}
                         alt={photo.title}
+                        width={320}
+                        height={384}
                         className="w-80 h-96 object-cover transition-transform duration-700 hover:scale-105"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = `https://via.placeholder.com/320x384/4f46e5/ffffff?text=${photo.title}`;
-                        }}
                       />
                       
                       {/* Image Overlay */}
@@ -200,11 +140,6 @@ const MyselfPage: React.FC = () => {
                           </div>
                         )}
                       </div>
-
-                      {/* Active Image Glow Effect */}
-                      {position === 0 && (
-                        <div className="absolute -inset-4 bg-gradient-to-r from-purple-400/20 via-purple-600/30 to-purple-800/20 blur-2xl rounded-2xl -z-10 animate-pulse"></div>
-                      )}
                     </div>
                   </div>
                 );
@@ -212,25 +147,15 @@ const MyselfPage: React.FC = () => {
             </div>
 
             {/* Navigation Arrows */}
-            <button
-              onClick={prevImage}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-40 p-3 bg-black/50 hover:bg-purple-600/80 rounded-full border border-gray-600 hover:border-purple-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm"
-            >
+            <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 z-40 p-3 bg-black/50 hover:bg-purple-600/80 rounded-full border border-gray-600 hover:border-purple-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm">
               <ChevronLeft size={24} className="text-white" />
             </button>
-
-            <button
-              onClick={nextImage}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-40 p-3 bg-black/50 hover:bg-purple-600/80 rounded-full border border-gray-600 hover:border-purple-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm"
-            >
+            <button onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 z-40 p-3 bg-black/50 hover:bg-purple-600/80 rounded-full border border-gray-600 hover:border-purple-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm">
               <ChevronRight size={24} className="text-white" />
             </button>
 
             {/* Auto-play Control */}
-            <button
-              onClick={() => setIsAutoPlay(!isAutoPlay)}
-              className="absolute top-4 right-4 z-40 p-3 bg-black/50 hover:bg-purple-600/80 rounded-full border border-gray-600 hover:border-purple-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm"
-            >
+            <button onClick={() => setIsAutoPlay(!isAutoPlay)} className="absolute top-4 right-4 z-40 p-3 bg-black/50 hover:bg-purple-600/80 rounded-full border border-gray-600 hover:border-purple-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm">
               {isAutoPlay ? <Pause size={20} className="text-white" /> : <Play size={20} className="text-white" />}
             </button>
 
@@ -255,14 +180,12 @@ const MyselfPage: React.FC = () => {
                     : 'border-gray-600 hover:border-purple-400'
                 }`}
               >
-                <img
+                <Image
                   src={photo.src}
                   alt={photo.title}
+                  width={64}
+                  height={64}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = `https://via.placeholder.com/64x64/4f46e5/ffffff?text=${index + 1}`;
-                  }}
                 />
                 {index === currentImageIndex && (
                   <div className="absolute inset-0 bg-purple-500/20"></div>
@@ -285,9 +208,6 @@ const MyselfPage: React.FC = () => {
             </div>
           </div>
         </div>
-
-        
-        
       </div>
 
       {/* Custom CSS for 3D perspective */}
