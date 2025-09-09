@@ -1,6 +1,7 @@
-'use client'
+'use client';
 import React, { useState, useEffect } from 'react';
-import { ExternalLink, Github, Eye } from 'lucide-react';
+import Image from 'next/image';
+import { Github, Eye } from 'lucide-react';
 
 interface Technology {
   name: string;
@@ -21,7 +22,6 @@ interface Project {
 
 const ProjectsPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -34,7 +34,7 @@ const ProjectsPage: React.FC = () => {
     {
       id: 1,
       title: "Travelwish",
-      description: "Travelwish  is an innovative applicant tracking system (ATS) set to transform the recruitment landscape.",
+      description: "Travelwish is an innovative applicant tracking system (ATS) set to transform the recruitment landscape.",
       image: "/images/travelwish.png",
       technologies: [
         { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", color: "#61DAFB" },
@@ -51,7 +51,7 @@ const ProjectsPage: React.FC = () => {
       id: 2,
       title: "Travelwish web app",
       description: "Travelwish web app is a comprehensive web-based platform designed for selling and managing video games.",
-      image: "/images/",
+      image: "/images/01.jpeg",
       technologies: [
         { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", color: "#61DAFB" },
         { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
@@ -66,7 +66,7 @@ const ProjectsPage: React.FC = () => {
     {
       id: 3,
       title: "Bobalicious",
-      description: "An my first project for bobble tea shop",
+      description: "My first project for a bobble tea shop.",
       image: "/images/bobalicious.jpg",
       technologies: [
         { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", color: "#61DAFB" },
@@ -77,12 +77,12 @@ const ProjectsPage: React.FC = () => {
       ],
       liveLink: "https://pramuka-store.com",
       githubLink: "https://github.com/yourusername/pramuka",
-      category: "web application"
+      category: "Web Application"
     },
     {
       id: 4,
       title: "Baby Drive",
-      description: "Baby Driver is game for littele children for identtfy some things, a hardware project that uses the ESP32-E.",
+      description: "Baby Driver is a game for little children to identify objects, a hardware project using ESP32-E.",
       image: "/images/babydrive.jpg",
       technologies: [
         { name: "Arduino", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg", color: "#00979D" },
@@ -100,7 +100,7 @@ const ProjectsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
+        {/* Header */}
         <div className={`text-center mb-20 transform transition-all duration-1200 ease-out ${
           isVisible ? 'translate-y-0 opacity-100' : '-translate-y-16 opacity-0'
         }`}>
@@ -124,21 +124,19 @@ const ProjectsPage: React.FC = () => {
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
               }`}
               style={{ transitionDelay: `${400 + index * 200}ms` }}
-              onMouseEnter={() => setHoveredCard(project.id)}
-              onMouseLeave={() => setHoveredCard(null)}
             >
               {/* Project Card */}
-              <div className="relative bg-gradient-to-br from-gray-900/80 to-gray-800/60 backdrop-blur-lg rounded-2xl border border-gray-700/50 overflow-hidden transition-all duration-500 group-hover:transform group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-purple-500/20 group-hover:border-purple-500/40">
+              <div className="relative bg-gradient-to-br from-gray-900/80 to-gray-800/60 backdrop-blur-lg rounded-2xl border border-gray-700/50 overflow-hidden transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-purple-500/20 group-hover:border-purple-500/40">
                 
                 {/* Project Image */}
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = `https://via.placeholder.com/400x200/1f2937/9ca3af?text=${project.title}`;
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                      e.currentTarget.src = `https://via.placeholder.com/400x200/1f2937/9ca3af?text=${project.title}`;
                     }}
                   />
                   {/* Overlay */}
@@ -154,31 +152,19 @@ const ProjectsPage: React.FC = () => {
 
                 {/* Project Content */}
                 <div className="p-6">
-                  {/* Project Title */}
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-purple-300 transition-colors duration-300">
-                    {project.title}
-                  </h3>
-
-                  {/* Project Description */}
-                  <p className="text-gray-300 text-sm leading-relaxed mb-4 group-hover:text-gray-200 transition-colors duration-300">
-                    {project.description}
-                  </p>
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-purple-300 transition-colors duration-300">{project.title}</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed mb-4 group-hover:text-gray-200 transition-colors duration-300">{project.description}</p>
 
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech, techIndex) => (
-                      <div
-                        key={techIndex}
-                        className="flex items-center gap-1 px-2 py-1 bg-gray-800/50 border border-gray-600/30 rounded-lg hover:bg-gray-700/50 hover:border-gray-500/50 transition-all duration-300"
-                      >
-                        <img
+                      <div key={techIndex} className="flex items-center gap-1 px-2 py-1 bg-gray-800/50 border border-gray-600/30 rounded-lg hover:bg-gray-700/50 hover:border-gray-500/50 transition-all duration-300">
+                        <Image
                           src={tech.icon}
                           alt={tech.name}
-                          className="w-4 h-4 object-contain"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
-                          }}
+                          width={16}
+                          height={16}
+                          className="object-contain"
                         />
                         <span className="text-xs text-gray-400">{tech.name}</span>
                       </div>
@@ -191,18 +177,18 @@ const ProjectsPage: React.FC = () => {
                       href={project.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-600/50 group/btn"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-600/50"
                     >
-                      <Eye size={16} className="group-hover/btn:scale-110 transition-transform duration-300" />
+                      <Eye size={16} />
                       <span className="text-sm font-medium">View</span>
                     </a>
                     <a
                       href={project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center p-2 border border-gray-600 hover:border-purple-500 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-purple-600/10 group/btn"
+                      className="flex items-center justify-center p-2 border border-gray-600 hover:border-purple-500 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-purple-600/10"
                     >
-                      <Github size={16} className="text-gray-400 group-hover/btn:text-purple-400 transition-colors duration-300" />
+                      <Github size={16} className="text-gray-400 hover:text-purple-400 transition-colors duration-300" />
                     </a>
                   </div>
                 </div>
@@ -215,20 +201,8 @@ const ProjectsPage: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* Call to Action */}
-        <div className={`text-center mt-20 transform transition-all duration-1000 ease-out ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-        }`} style={{ transitionDelay: '1200ms' }}>
-          
-              
-              
-            
-            
-          </div>
-        </div>
       </div>
-    
+    </div>
   );
 };
 
