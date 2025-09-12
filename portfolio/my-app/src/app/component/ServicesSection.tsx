@@ -9,6 +9,7 @@ interface Technology {
 }
 
 interface Service {
+  
   id: number;
   number: string;
   title: string;
