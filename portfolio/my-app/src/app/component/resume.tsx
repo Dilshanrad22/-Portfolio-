@@ -173,7 +173,7 @@ const ResumePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white py-20 px-6">
+    <div className="min-h-screen text-white py-20 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className={`text-center mb-20 transform transition-all duration-1200 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-16 opacity-0'}`}>

@@ -119,7 +119,7 @@ const ProjectsPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white py-20 px-6">
+    <div className="min-h-screen text-white py-20 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Simple Header */}
         <div className={`text-center mb-16 transform transition-all duration-1000 ${

@@ -73,7 +73,7 @@ const ServicesPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white py-20 px-6 overflow-hidden">
+    <div className="min-h-screen text-white py-20 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className={`text-center mb-20 transform transition-all duration-1200 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-16 opacity-0'}`}>

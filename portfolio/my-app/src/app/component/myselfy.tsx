@@ -56,7 +56,7 @@ const MyselfPage: React.FC = () => {
   const goToImage = (index: number) => setCurrentImageIndex(index);
 
   return (
-    <div className="min-h-screen bg-black text-white py-20 px-6 overflow-hidden">
+    <div className="min-h-screen text-white py-20 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className={`text-center mb-16 transform transition-all duration-1200 ease-out ${

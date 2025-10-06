@@ -15,7 +15,7 @@ export default function Header() {
     'Full stack developer',
     'IT undergraduate', 
     'UI UX designer',
-    'Sports enthusiast'
+    'Sports Enthusiast'
   ]
 
   // Function to handle smooth scrolling to sections
@@ -161,7 +161,7 @@ useEffect(() => {
       </nav>
 
       {/* Main Header Section */}
-      <header className="min-h-screen bg-black text-white overflow-hidden relative">
+      <header className="min-h-screen text-white overflow-hidden relative">
         {/* Animated Background Circles */}
         <div className="absolute top-20 right-20 w-96 h-96 bg-purple-600 opacity-20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-purple-600 opacity-15 rounded-full blur-3xl animate-pulse"></div>
