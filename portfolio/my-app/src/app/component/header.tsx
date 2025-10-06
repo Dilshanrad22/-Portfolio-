@@ -76,7 +76,7 @@ useEffect(() => {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
-              {navItems.map((item, index) => (
+              {navItems.map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
@@ -133,7 +133,7 @@ useEffect(() => {
           <div className="bg-black/95 backdrop-blur-lg border-t border-purple-600/30">
             <div className="container mx-auto px-6 py-4">
               <div className="flex flex-col space-y-4">
-                {navItems.map((item, index) => (
+                {navItems.map((item) => (
                   <button
                     key={item}
                     onClick={() => {
