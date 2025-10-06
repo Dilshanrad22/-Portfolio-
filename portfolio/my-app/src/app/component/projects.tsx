@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Github, Eye } from 'lucide-react';
+import { Github, ExternalLink, Info } from 'lucide-react';
 
 interface Technology {
   name: string;
@@ -33,9 +33,9 @@ const ProjectsPage: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "Travelwish",
+      title: "Travelwish Mobile app",
       description: "Travelwish is a trip management app designed to help travelers easily plan, organize, and manage their journeys. It allows users to create itineraries, track bookings, monitor budgets, and get timely reminders, making travel more convenient and stress-free..",
-      image: "/images/travelwish.png",
+      image: "/images/travel wish.png",
       technologies: [
         { name: "Flutter", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg", color: "#02569B" },
         { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
@@ -49,7 +49,7 @@ const ProjectsPage: React.FC = () => {
       id: 2,
       title: "Travelwish Web App",
       description: "A web application built to help travel service providers manage and offer their services online. It enables providers to showcase travel packages, handle bookings, interact with customers, and streamline trip management in one platform, improving efficiency and customer experience.",
-      image: "/images/01.jpeg",
+      image: "/images/travel_wish.png",
       technologies: [
         { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", color: "#000000" },
                 { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
@@ -61,8 +61,24 @@ const ProjectsPage: React.FC = () => {
       githubLink: "https://github.com/yourusername/vertex",
       category: "Web Application"
     },
-    {
+        {
       id: 3,
+      title: "Mind Haven ",
+      description: "Developed a full-stack web application aimed at connecting users with certified counselors and volunteer doctors for accessible mental health support. The platform includes user registration, service booking, and appointment management, along with a dedicated counselor dashboard to manage availability and sessions.",
+      image: "/images/mind_haven.png",
+      technologies: [
+        { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", color: "#000000" },
+        { name: ".NET", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg", color: "#512BD4" },
+        { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", color: "#47A248" },
+        { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg", color: "#06B6D4" }
+
+      ],
+      liveLink: "https://vertex-games.com",
+      githubLink: "https://github.com/yourusername/vertex",
+      category: "Health care web Application"
+    },
+    {
+      id: 4,
       title: "Bobalicious",
       description: "An online store developed for a bubble tea shop, enabling customers to explore flavors, customize drinks, and place orders with ease. The app features product browsing, a shopping cart, secure checkout, and order tracking. It also provides shop owners with tools to manage products, prices, and orders efficiently, boosting sales and customer engagement..",
       image: "/images/bobalicious.jpg",
@@ -148,6 +164,19 @@ const ProjectsPage: React.FC = () => {
                       {project.category}
                     </span>
                   </div>
+                  
+                  {/* Live Link Overlay */}
+                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center w-8 h-8 bg-purple-600 hover:bg-purple-700 text-white rounded-full transition-colors duration-200"
+                      title="View Live Project"
+                    >
+                      <ExternalLink size={14} />
+                    </a>
+                  </div>
                 </div>
 
                 {/* Content Section */}
@@ -183,20 +212,16 @@ const ProjectsPage: React.FC = () => {
 
                   {/* Action Buttons */}
                   <div className="flex gap-3 mt-auto">
-                    <a
-                      href={project.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors duration-200"
-                    >
-                      <Eye size={16} />
-                      <span className="text-sm">View</span>
-                    </a>
+                    <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-lg transition-colors duration-200">
+                      <Info size={16} />
+                      <span className="text-sm">Learn More</span>
+                    </button>
                     <a
                       href={project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center p-2 border border-gray-700 hover:border-purple-500 hover:text-purple-400 rounded-lg transition-colors duration-200"
+                      title="View Source Code"
                     >
                       <Github size={16} />
                     </a>

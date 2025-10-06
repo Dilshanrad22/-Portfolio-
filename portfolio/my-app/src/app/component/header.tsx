@@ -10,13 +10,25 @@ export default function Header() {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0)
   const [titleVisible, setTitleVisible] = useState(true)
 
-  const navItems = ['Home', 'Services', 'Resume', 'My selfy', 'Contact']
+  const navItems = ['Home', 'Services', 'Projects', 'Resume', 'My selfy', 'Contact']
   const titles = [
     'Full stack developer',
     'IT undergraduate', 
     'UI UX designer',
     'Sports enthusiast'
   ]
+
+  // Function to handle smooth scrolling to sections
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId.toLowerCase())
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+    setActiveSection(sectionId)
+  }
 
   // Function to handle CV download
   const handleDownloadCV = () => {
@@ -65,16 +77,14 @@ useEffect(() => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
               {navItems.map((item, index) => (
-                <a
+                <button
                   key={item}
-                  href={`#${item.toLowerCase()}`}
-                  onClick={() => setActiveSection(item)}
+                  onClick={() => scrollToSection(item)}
                   className={`relative group py-2 px-4 text-lg font-medium transition-all duration-300 transform hover:scale-105 ${
                     activeSection === item
                       ? 'text-purple-400'
                       : 'text-gray-300 hover:text-white'
                   }`}
-                  style={{ animationDelay: `${index * 100}ms` }}
                 >
                   {item}
                   
@@ -87,7 +97,7 @@ useEffect(() => {
                   
                   {/* Hover glow effect */}
                   <span className="absolute inset-0 rounded-lg bg-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></span>
-                </a>
+                </button>
               ))}
             </div>
 
@@ -124,21 +134,17 @@ useEffect(() => {
             <div className="container mx-auto px-6 py-4">
               <div className="flex flex-col space-y-4">
                 {navItems.map((item, index) => (
-                  <a
+                  <button
                     key={item}
-                    href={`#${item.toLowerCase()}`}
                     onClick={() => {
-                      setActiveSection(item)
+                      scrollToSection(item)
                       setIsMenuOpen(false)
                     }}
-                    className={`relative group py-3 px-4 text-lg font-medium transition-all duration-300 rounded-lg transform hover:translate-x-2 ${
+                    className={`relative group py-3 px-4 text-lg font-medium transition-all duration-300 rounded-lg transform hover:translate-x-2 text-left ${
                       activeSection === item
                         ? 'text-purple-400 bg-purple-600/10'
                         : 'text-gray-300 hover:text-white hover:bg-purple-600/5'
                     }`}
-                    style={{ 
-                      animation: isMenuOpen ? `slideInLeft 0.5s ease-out ${index * 100}ms both` : 'none'
-                    }}
                   >
                     <span className="relative z-10">{item}</span>
                     
@@ -146,7 +152,7 @@ useEffect(() => {
                     {activeSection === item && (
                       <span className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-400 to-purple-600 rounded-r-full"></span>
                     )}
-                  </a>
+                  </button>
                 ))}
               </div>
             </div>
@@ -211,19 +217,29 @@ useEffect(() => {
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
               }`}>
                 <a 
-                  href="#" 
+                  href="https://www.linkedin.com/in/dulanjana-dilshan-6bb13a2ba?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="LinkedIn Profile"
+                  aria-label="Visit LinkedIn Profile"
                   className="p-3 rounded-full border border-purple-600 hover:bg-purple-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-600/50 group"
                 >
                   <Linkedin size={24} className="text-purple-400 group-hover:text-white transition-colors" />
                 </a>
                 <a 
-                  href="#" 
+                  href="mailto:Dulanjanassd@gmail.com" 
+                  title="Send Email"
+                  aria-label="Send an email"
                   className="p-3 rounded-full border border-purple-600 hover:bg-purple-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-600/50 group"
                 >
                   <Mail size={24} className="text-purple-400 group-hover:text-white transition-colors" />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://github.com" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="GitHub Profile"
+                  aria-label="Visit GitHub Profile"
                   className="p-3 rounded-full border border-purple-600 hover:bg-purple-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-600/50 group"
                 >
                   <Github size={24} className="text-purple-400 group-hover:text-white transition-colors" />
