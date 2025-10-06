@@ -187,7 +187,7 @@ const ResumePage: React.FC = () => {
         <div className={`mb-20 transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`} style={{ transitionDelay: '400ms' }}>
           <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 bg-clip-text text-transparent">My Skills</h2>
           
-          <div className="grid gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {skillCategories.map((category, categoryIndex) => (
               <div 
                 key={categoryIndex} 
@@ -195,11 +195,10 @@ const ResumePage: React.FC = () => {
                 style={{ transitionDelay: `${categoryIndex * 200}ms` }}
               >
                 {/* Category Card */}
-                <div className="relative bg-gradient-to-br from-gray-900/90 to-black/80 backdrop-blur-xl rounded-3xl border border-white/10 p-8 hover:border-purple-500/30 transition-all duration-700">
+                <div className="relative bg-gradient-to-br from-slate-900/90 to-gray-900/90 backdrop-blur-sm border border-slate-700/50 rounded-lg p-8 hover:border-purple-500/50 hover:bg-gradient-to-br hover:from-slate-800/90 hover:to-gray-800/90 transition-all duration-500 group-hover:transform group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-purple-500/20">
                   
-                  {/* Floating gradient orbs */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-br from-purple-400/20 to-purple-500/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-200"></div>
+                  {/* Subtle glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
                   {/* Category Title */}
                   <div className="relative z-10 mb-8">
@@ -208,46 +207,48 @@ const ResumePage: React.FC = () => {
                   </div>
                   
                   {/* Skills Grid */}
-                  <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
+                  <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {category.skills.map((skill, skillIndex) => (
                       <div 
                         key={skillIndex}
-                        className="group/skill relative p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-purple-500/50 transition-all duration-500 hover:scale-110 hover:-translate-y-2"
+                        className="group/skill relative p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl hover:bg-white/15 hover:border-purple-400/60 transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-500/25"
                         style={{ transitionDelay: `${skillIndex * 100}ms` }}
                       >
                         {/* Skill Icon */}
                         <div className="relative z-10 flex flex-col items-center">
-                          <div className="w-16 h-16 mb-3 flex items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/5 group-hover/skill:from-purple-500/20 group-hover/skill:to-purple-600/20 transition-all duration-300">
+                          <div className="w-14 h-14 mb-4 flex items-center justify-center rounded-lg bg-gradient-to-br from-white/20 to-white/10 group-hover/skill:from-purple-500/30 group-hover/skill:to-purple-600/30 transition-all duration-400 group-hover/skill:scale-110">
                             <Image 
                               src={skill.icon} 
                               alt={skill.name} 
-                              width={40} 
-                              height={40} 
-                              className="object-contain filter group-hover/skill:brightness-125 group-hover/skill:drop-shadow-lg transition-all duration-300" 
+                              width={32} 
+                              height={32} 
+                              className="object-contain filter group-hover/skill:brightness-125 group-hover/skill:drop-shadow-lg transition-all duration-400" 
                             />
                           </div>
-                          <span className="text-xs font-medium text-white/80 group-hover/skill:text-white transition-colors duration-300 text-center leading-tight">
+                          <span className="text-sm font-semibold text-white/90 group-hover/skill:text-white transition-colors duration-300 text-center leading-tight">
                             {skill.name}
                           </span>
                         </div>
                         
-                        {/* Hover glow effect */}
-                        <div className="absolute inset-0 rounded-2xl opacity-0 group-hover/skill:opacity-100 transition-opacity duration-500 -z-10">
-                          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-2xl blur-xl"></div>
+                        {/* Modern glow effect */}
+                        <div className="absolute inset-0 rounded-xl opacity-0 group-hover/skill:opacity-100 transition-opacity duration-500 -z-10">
+                          <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-purple-600/20 rounded-xl blur-lg"></div>
                         </div>
                         
-                        {/* Shimmer effect */}
-                        <div className="absolute inset-0 rounded-2xl opacity-0 group-hover/skill:opacity-100 transition-opacity duration-700 overflow-hidden">
-                          <div className="absolute -top-2 -left-2 w-4 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 group-hover/skill:animate-pulse"></div>
+                        {/* Subtle border glow */}
+                        <div className="absolute inset-0 rounded-xl opacity-0 group-hover/skill:opacity-100 transition-opacity duration-500">
+                          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-400/30 via-pink-400/30 to-purple-400/30 p-[1px]">
+                            <div className="w-full h-full rounded-xl bg-transparent"></div>
+                          </div>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
                 
-                {/* Background pattern */}
-                <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-1000">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-transparent to-purple-600 rounded-3xl"></div>
+                {/* Clean minimal effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-purple-600/5 rounded-lg"></div>
                 </div>
               </div>
             ))}
