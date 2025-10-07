@@ -95,7 +95,7 @@ const ServicesPage: React.FC = () => {
                 className={`group relative transform transition-all duration-1000 ease-out ${isVisible ? 'translate-x-0 translate-y-0 opacity-100' : `${slideDirection} opacity-0`}`}
                 style={{ transitionDelay: `${400 + index * 300}ms` }}
               >
-                <div className="relative h-full bg-gradient-to-br from-gray-900/80 to-gray-800/60 backdrop-blur-lg rounded-2xl border border-gray-700/50 p-8 transition-all duration-500 overflow-hidden min-h-[500px] flex flex-col group-hover:transform group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-purple-500/20 group-hover:border-purple-500/40">
+                <div className="relative h-full bg-gradient-to-br from-gray-900/80 to-gray-800/60 backdrop-blur-lg rounded-2xl border border-gray-700/50 p-6 sm:p-8 transition-all duration-500 overflow-hidden flex flex-col group-hover:transform group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-purple-500/20 group-hover:border-purple-500/40">
                   
                   {/* Background Effects */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
@@ -128,7 +128,7 @@ const ServicesPage: React.FC = () => {
                       <h4 className="text-sm font-semibold text-purple-400 mb-4 uppercase tracking-wider transform group-hover:translate-x-1 transition-transform duration-500">
                         Tech Stack
                       </h4>
-                      <div className="grid grid-cols-4 gap-4 mb-6">
+                      <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 mb-6">
                         {service.technologies.map((tech, techIndex) => (
                           <div
                             key={techIndex}

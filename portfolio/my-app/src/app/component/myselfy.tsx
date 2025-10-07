@@ -19,18 +19,18 @@ const MyselfPage: React.FC = () => {
 
   // Photos array should be defined before useEffect
   const photos: Photo[] = [
-    { id: 1, src: "/images/07.jpeg", title: "Team Spirit", description: "With my amazing teammates during our university sports event", category: "Sports" },
-    { id: 2, src: "/images/01.jpeg", title: "Achievement Moment", description: "Receiving recognition for academic excellence and leadership", category: "Academic" },
-    { id: 3, src: "/images/02.jpeg", title: "Football Passion", description: "Mora Football Alumni Celebration - Living my passion for the game", category: "Sports" },
-    { id: 4, src: "/images/03.jpeg", title: "Friendship Goals", description: "Quality time with my closest friends and teammates", category: "Personal" },
-    { id: 5, src: "/images/04.jpeg", title: "Mora Soccer Reunion", description: "Reunion with fellow soccer enthusiasts - memories that last forever", category: "Sports" },
-    { id: 6, src: "/images/05.jpeg", title: "Adventure Time", description: "Exploring nature and embracing outdoor challenges", category: "Adventure" },
-    { id: 7, src: "/images/06.jpeg", title: "Milestone Moment", description: "Celebrating educational achievements with pride and joy", category: "Academic" },
-    { id: 8, src: "/images/08.jpeg", title: "Milestone Moment", description: "", category: "" },
-    { id: 9, src: "/images/09.jpeg", title: "Milestone Moment", description: "", category: "" },
-    { id: 10, src: "/images/10.jpeg", title: "Milestone Moment", description: "", category: "" },
-    { id: 11, src: "/images/11.jpeg", title: "Milestone Moment", description: "", category: "" },
-    { id: 12, src: "/images/12.jpeg", title: "Milestone Moment", description: "", category: "" },
+    { id: 1, src: "/images/07.jpeg", title: "My Achievements", description: "With my amazing teammates during our university sports event", category: "Sports" },
+    { id: 2, src: "/images/01.jpeg", title: "Achievement Moment", description: "Joined WSO2 session", category: "Academic" },
+    { id: 3, src: "/images/02.jpeg", title: "Conference Time", description: "AGM Leo Club of University Of Moratuwa", category: "Leo" },
+    { id: 4, src: "/images/03.jpeg", title: "Achievement Moment", description: "With my amazing teammates during our university sports event", category: "Sport" },
+    { id: 5, src: "/images/04.jpeg", title: "Achivement Moment", description: "Most Outstand Director in UoM Leo club", category: "Leo" },
+    { id: 6, src: "/images/13.jpg", title: "Leadership Camp Time", description: "Most Outstand Director in UoM Leo club", category: "Leo" },
+    { id: 7, src: "/images/06.jpeg", title: "Achivement Moment", description: "Celebrating educational achievements with pride and joy", category: "Academic" },
+    { id: 8, src: "/images/08.jpeg", title: "Achivement Moment", description: "Get University Colors in 2024/2025", category: "Sport" },
+    { id: 9, src: "/images/14.jpg", title: "Sasnaka Sansada Moment", description: "Did mathematics seminar in two days", category: "Education" },
+    { id: 10, src: "/images/10.jpeg", title: "Team Spirit", description: "Mora Weighlifting", category: "Sport" },
+    { id: 11, src: "/images/11.jpeg", title: "Personal Growth", description: "Reflecting on my journey and achievements", category: "Personal" },
+    { id: 12, src: "/images/12.jpeg", title: "Team work", description: "Academic presentation group", category: "Academic" },
   ];
 
   useEffect(() => {
@@ -120,7 +120,7 @@ const MyselfPage: React.FC = () => {
                         alt={photo.title}
                         width={320}
                         height={384}
-                        className="w-80 h-96 object-cover transition-transform duration-700 hover:scale-105"
+                        className="w- h- object-cover transition-transform duration-700 hover:scale-105"
                       />
                       
                       {/* Image Overlay */}
