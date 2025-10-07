@@ -24,3 +24,63 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Subtle floating animation for profile image */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-0.5deg);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Respect users' reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float {
+    animation: none !important;
+  }
+}
+
+/* Radial glowing light behind profile picture */
+.glow-radial {
+  background: radial-gradient(circle at 50% 40%, rgba(139,92,246,0.25), rgba(139,92,246,0.12) 30%, transparent 60%);
+  filter: blur(20px);
+  opacity: 0.95;
+  animation: pulse 3.5s ease-in-out infinite;
+  will-change: opacity, transform, filter;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.75;
+    filter: blur(18px);
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+    filter: blur(24px);
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.75;
+    filter: blur(18px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-radial {
+    animation: none !important;
+    filter: none !important;
+    opacity: 0.6 !important;
+  }
+}

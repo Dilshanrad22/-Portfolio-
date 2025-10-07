@@ -187,16 +187,18 @@ export default function Header() {
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
                 }`}
               >
-                <a
-                  href="https://www.linkedin.com/in/dulanjana-dilshan-6bb13a2ba"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-full border border-purple-600 hover:bg-purple-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-600/50"
-                >
-                  <Linkedin size={24} className="text-purple-400 hover:text-white" />
-                </a>
+                  <a
+                    href="https://www.linkedin.com/in/dulanjana-dilshan-6bb13a2ba"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="LinkedIn"
+                    className="p-3 rounded-full border border-purple-600 hover:bg-purple-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-600/50"
+                  >
+                    <Linkedin size={24} className="text-purple-400 hover:text-white" />
+                  </a>
                 <a
                   href="mailto:Dulanjanassd@gmail.com"
+                  title="Email"
                   className="p-3 rounded-full border border-purple-600 hover:bg-purple-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-600/50"
                 >
                   <Mail size={24} className="text-purple-400 hover:text-white" />
@@ -205,6 +207,7 @@ export default function Header() {
                   href="https://github.com"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="GitHub"
                   className="p-3 rounded-full border border-purple-600 hover:bg-purple-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-600/50"
                 >
                   <Github size={24} className="text-purple-400 hover:text-white" />
@@ -230,15 +233,21 @@ export default function Header() {
                 }`}
               >
                 {/* Profile Image - No animation, larger for desktop */}
-                <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[30rem] lg:h-[30rem] xl:w-[34rem] xl:h-[34rem] rounded-full overflow-hidden border-4 border-purple-600/50 hover:scale-105 transition-transform duration-500 hover:shadow-2xl hover:shadow-purple-600/50 lg:ml-20">
-                  <Image
-                    src="/images/propic.png"
-                    alt="Dulanjana Dilshan"
-                    width={800}
-                    height={800}
-                    className="w-full h-full object-cover"
-                    priority
-                  />
+                <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 xl:w-[30rem] xl:h-[30rem] rounded-full overflow-visible lg:ml-20">
+                  {/* Glowing radial light behind the profile image */}
+                  <div className="absolute inset-0 flex items-center justify-center -z-10">
+                    <span className="glow-radial w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-[28rem] xl:h-[28rem] rounded-full" aria-hidden="true"></span>
+                  </div>
+                  <div className="relative rounded-full overflow-hidden border-4 border-purple-600/50 hover:scale-105 transition-transform duration-500 hover:shadow-2xl hover:shadow-purple-600/50 animate-float w-full h-full">
+                    <Image
+                      src="/images/propic.png"
+                      alt="Dulanjana Dilshan"
+                      width={800}
+                      height={800}
+                      className="w-full h-full object-cover"
+                      priority
+                    />
+                  </div>
                 </div>
               </div>
             </div>
