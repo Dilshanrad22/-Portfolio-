@@ -28,8 +28,8 @@ export default function Header() {
 
   const handleDownloadCV = () => {
     const link = document.createElement("a")
-    link.href = "/cv/dulanjana_dilshan.pdf"
-    link.download = "dulanjana_dilshan.pdf"
+    link.href = "/cv/Dulanjna_Dilshan_cv.pdf"
+    link.download = "Dulanjna_Dilshan_cv.pdf"
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
