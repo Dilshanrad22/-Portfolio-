@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Dulanjana | Portfolio",
   description: "Personal portfolio showcasing my projects and skills",
+  verification: {
+    google: "QAdMGf3dlQduPQGzDkYAKz7h8_x9u5V8x8KGwqIRjCI",
+  },
   icons: {
     icon: "/images/propic.png",
   },
@@ -22,9 +25,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
