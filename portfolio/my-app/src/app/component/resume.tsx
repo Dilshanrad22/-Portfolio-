@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Calendar, MapPin, Award, Users, Trophy, Star } from 'lucide-react';
+import { Calendar, MapPin, Award, Users, Trophy, Star, Briefcase } from 'lucide-react';
 
 interface Skill {
   name: string;
@@ -23,6 +23,16 @@ interface Education {
   gpa?: string;
 }
 
+interface Experience {
+  id: number;
+  title: string;
+  company: string;
+  duration: string;
+  type: string;
+  description: string;
+  technologies: string[];
+}
+
 interface Activity {
   id: number;
   title: string;
@@ -40,6 +50,18 @@ const ResumePage: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const experiences: Experience[] = [
+    {
+      id: 1,
+      title: "Software Engineering Intern",
+      company: "Scienter Technologies (Pvt) Ltd",
+      duration: "2025 - Present",
+      type: "Internship · Mobile Development",
+      description: "Developing cross-platform mobile applications using React Native. Working with Redux Toolkit for state management and collaborating with the engineering team to build scalable, production-ready mobile solutions.",
+      technologies: ["React Native", "Redux", "Redux Toolkit", "JavaScript", "TypeScript"]
+    }
+  ];
+
   const skillCategories: SkillCategory[] = [
     {
       title: "Languages",
@@ -52,14 +74,23 @@ const ResumePage: React.FC = () => {
       ]
     },
     {
-      title: "Frontend",
+      title: "Frontend & Mobile",
       skills: [
+        { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+        { name: "React Native", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
         { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
         { name: "Flutter", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
-        { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
         { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
         { name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
         { name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" }
+      ]
+    },
+    {
+      title: "State Management",
+      skills: [
+        { name: "Redux", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" },
+        { name: "Redux Toolkit", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" },
+        { name: "Zustand", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" }
       ]
     },
     {
@@ -82,6 +113,18 @@ const ResumePage: React.FC = () => {
         { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
         { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
         { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" }
+      ]
+    },
+    {
+      title: "AI Tools",
+      skills: [
+        { name: "Claude Code",    icon: "https://cdn.simpleicons.org/claude/ffffff" },
+        { name: "ChatGPT",        icon: "https://cdn.simpleicons.org/openai/ffffff" },
+        { name: "Codex",          icon: "https://cdn.simpleicons.org/openai/ffffff" },
+        { name: "Gemini",         icon: "https://cdn.simpleicons.org/googlegemini/ffffff" },
+        { name: "Perplexity",     icon: "https://cdn.simpleicons.org/perplexity/ffffff" },
+        { name: "Google Stitch",  icon: "https://cdn.simpleicons.org/google/ffffff" },
+        { name: "GitHub Copilot", icon: "https://cdn.simpleicons.org/githubcopilot/ffffff" }
       ]
     }
   ];
@@ -217,12 +260,13 @@ const ResumePage: React.FC = () => {
                         {/* Skill Icon */}
                         <div className="relative z-10 flex flex-col items-center">
                           <div className="w-14 h-14 mb-4 flex items-center justify-center rounded-lg bg-gradient-to-br from-white/20 to-white/10 group-hover/skill:from-purple-500/30 group-hover/skill:to-purple-600/30 transition-all duration-400 group-hover/skill:scale-110">
-                            <Image 
-                              src={skill.icon} 
-                              alt={skill.name} 
-                              width={32} 
-                              height={32} 
-                              className="object-contain filter group-hover/skill:brightness-125 group-hover/skill:drop-shadow-lg transition-all duration-400" 
+                            <Image
+                              src={skill.icon}
+                              alt={skill.name}
+                              width={32}
+                              height={32}
+                              className="object-contain filter group-hover/skill:brightness-125 group-hover/skill:drop-shadow-lg transition-all duration-400"
+                              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                             />
                           </div>
                           <span className="text-sm font-semibold text-white/90 group-hover/skill:text-white transition-colors duration-300 text-center leading-tight">
@@ -289,6 +333,72 @@ const ResumePage: React.FC = () => {
                     )}
                   </div>
                 </div>
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-purple-600/5 rounded-2xl"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Experience Section */}
+        <div className={`mb-20 transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`} style={{ transitionDelay: '700ms' }}>
+          <h2 className="text-3xl font-bold text-center mb-12">Work Experience</h2>
+          <div className="space-y-6">
+            {experiences.map((exp, index) => (
+              <div
+                key={exp.id}
+                className="group relative bg-gradient-to-br from-gray-900/80 to-gray-800/60 backdrop-blur-lg rounded-2xl border border-gray-700/50 p-6 hover:border-purple-500/50 transition-all duration-500 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/20"
+                style={{ transitionDelay: `${index * 200}ms` }}
+              >
+                <div className="flex items-start gap-6">
+                  {/* Icon */}
+                  <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center shadow-lg shadow-purple-600/30">
+                    <Briefcase size={24} className="text-white" />
+                  </div>
+
+                  <div className="flex-grow">
+                    {/* Title row */}
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-1">
+                      <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors duration-300">
+                        {exp.title}
+                      </h3>
+                      <div className="flex items-center gap-2 text-purple-400 mt-1 md:mt-0">
+                        <Calendar size={16} />
+                        <span className="text-sm font-medium">{exp.duration}</span>
+                      </div>
+                    </div>
+
+                    {/* Company + type */}
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                      <div className="flex items-center gap-1">
+                        <MapPin size={14} className="text-gray-400" />
+                        <span className="text-gray-300 font-medium">{exp.company}</span>
+                      </div>
+                      <span className="px-2 py-0.5 bg-purple-600/20 text-purple-300 text-xs rounded-full border border-purple-500/30">
+                        {exp.type}
+                      </span>
+                    </div>
+
+                    <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300 mb-4 leading-relaxed">
+                      {exp.description}
+                    </p>
+
+                    {/* Tech tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {exp.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 bg-gray-800/80 border border-gray-600/50 text-gray-300 text-xs rounded-full hover:border-purple-500/50 hover:text-purple-300 transition-colors duration-300"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Glow */}
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-purple-600/5 rounded-2xl"></div>
                 </div>

@@ -142,6 +142,7 @@ const ServicesPage: React.FC = () => {
                                 width={32}
                                 height={32}
                                 className="object-contain transition-all duration-300"
+                                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                               />
                             </div>
                             <span className="text-xs text-gray-400 group-hover/tech:text-white transition-colors duration-300 text-center leading-tight">

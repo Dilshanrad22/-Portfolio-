@@ -34,15 +34,15 @@ const ProjectsPage: React.FC = () => {
     {
       id: 1,
       title: "Travelwish Mobile app",
-      description: "Travelwish is a trip management app designed to help travelers easily plan, organize, and manage their journeys. It allows users to create itineraries, track bookings, monitor budgets, and get timely reminders, making travel more convenient and stress-free..",
-      image: "/images/travel wish.png",
+      description: "Travelwish is a trip management app designed to help travelers easily plan, organize, and manage their journeys. It allows users to create itineraries, track bookings, monitor budgets, and get timely reminders, making travel more convenient and stress-free.",
+      image: "/images/travel_wish.png",
       technologies: [
         { name: "Flutter", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg", color: "#02569B" },
         { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
         { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", color: "#47A248" }
       ],
-      liveLink: "https://mergex-demo.com",
-      githubLink: "https://github.com/yourusername/mergex",
+      liveLink: "",
+      githubLink: "",
       category: "Mobile Application"
     },
     {
@@ -52,18 +52,17 @@ const ProjectsPage: React.FC = () => {
       image: "/images/travel_wish.png",
       technologies: [
         { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", color: "#000000" },
-                { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
+        { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
         { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", color: "#47A248" },
         { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", color: "#3178C6" }
-
       ],
-      liveLink: "https://vertex-games.com",
-      githubLink: "https://github.com/yourusername/vertex",
+      liveLink: "",
+      githubLink: "",
       category: "Web Application"
     },
-        {
+    {
       id: 3,
-      title: "Mind Haven ",
+      title: "Mind Haven",
       description: "Developed a full-stack web application aimed at connecting users with certified counselors and volunteer doctors for accessible mental health support. The platform includes user registration, service booking, and appointment management, along with a dedicated counselor dashboard to manage availability and sessions.",
       image: "/images/mind_haven.png",
       technologies: [
@@ -71,16 +70,15 @@ const ProjectsPage: React.FC = () => {
         { name: ".NET", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg", color: "#512BD4" },
         { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", color: "#47A248" },
         { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg", color: "#06B6D4" }
-
       ],
-      liveLink: "https://vertex-games.com",
-      githubLink: "https://github.com/yourusername/vertex",
-      category: "Health care web Application"
+      liveLink: "",
+      githubLink: "",
+      category: "Healthcare Web Application"
     },
     {
       id: 4,
       title: "Bobalicious",
-      description: "An online store developed for a bubble tea shop, enabling customers to explore flavors, customize drinks, and place orders with ease. The app features product browsing, a shopping cart, secure checkout, and order tracking. It also provides shop owners with tools to manage products, prices, and orders efficiently, boosting sales and customer engagement..",
+      description: "An online store developed for a bubble tea shop, enabling customers to explore flavors, customize drinks, and place orders with ease. The app features product browsing, a shopping cart, secure checkout, and order tracking. It also provides shop owners with tools to manage products, prices, and orders efficiently, boosting sales and customer engagement.",
       image: "/images/bobalicious.jpg",
       technologies: [
         { name: "HTML", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", color: "#E34F26" },
@@ -88,12 +86,12 @@ const ProjectsPage: React.FC = () => {
         { name: "PHP", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg", color: "#777BB4" },
         { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", color: "#4479A1" }
       ],
-      liveLink: "https://pramuka-store.com",
-      githubLink: "https://github.com/yourusername/pramuka",
+      liveLink: "",
+      githubLink: "",
       category: "Web Application"
     },
     {
-      id: 4,
+      id: 5,
       title: "Baby Drive",
       description: "Educational game for children using IoT sensors and ESP32 microcontroller.",
       image: "/images/babydrive.jpg",
@@ -102,9 +100,9 @@ const ProjectsPage: React.FC = () => {
         { name: "C++", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg", color: "#00599C" },
         { name: "IoT", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg", color: "#FF9900" }
       ],
-      liveLink: "https://revoclean-demo.com",
+      liveLink: "",
       githubLink: "https://lnkd.in/gBKMRVZz",
-      category: "Hardware/IoT"
+      category: "Hardware / IoT"
     }
   ];
 
@@ -166,17 +164,19 @@ const ProjectsPage: React.FC = () => {
                   </div>
                   
                   {/* Live Link Overlay */}
-                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <a
-                      href={project.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center w-8 h-8 bg-purple-600 hover:bg-purple-700 text-white rounded-full transition-colors duration-200"
-                      title="View Live Project"
-                    >
-                      <ExternalLink size={14} />
-                    </a>
-                  </div>
+                  {project.liveLink && (
+                    <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <a
+                        href={project.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center w-8 h-8 bg-purple-600 hover:bg-purple-700 text-white rounded-full transition-colors duration-200"
+                        aria-label={`View live demo of ${project.title}`}
+                      >
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
+                  )}
                 </div>
 
                 {/* Content Section */}
@@ -216,15 +216,17 @@ const ProjectsPage: React.FC = () => {
                       <Info size={16} />
                       <span className="text-sm">Learn More</span>
                     </button>
-                    <a
-                      href={project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center p-2 border border-gray-700 hover:border-purple-500 hover:text-purple-400 rounded-lg transition-colors duration-200"
-                      title="View Source Code"
-                    >
-                      <Github size={16} />
-                    </a>
+                    {project.githubLink && (
+                      <a
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center p-2 border border-gray-700 hover:border-purple-500 hover:text-purple-400 rounded-lg transition-colors duration-200"
+                        aria-label={`View source code for ${project.title}`}
+                      >
+                        <Github size={16} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

@@ -19,7 +19,8 @@ export default function Header() {
   ]
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId.toLowerCase())
+    const id = sectionId.toLowerCase().replace(/\s+/g, '')
+    const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" })
     }
@@ -63,6 +64,8 @@ export default function Header() {
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
+                  aria-label={`Navigate to ${item} section`}
+                  aria-current={activeSection === item ? "true" : undefined}
                   className={`relative group py-2 px-4 text-lg font-medium transition-all duration-300 transform hover:scale-105 ${
                     activeSection === item
                       ? "text-purple-400"
@@ -84,6 +87,9 @@ export default function Header() {
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+              aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               className="lg:hidden p-2 rounded-lg border border-purple-600/50 hover:bg-purple-600/20 transition-all duration-300 hover:scale-110"
             >
               <div className="relative w-6 h-6">
@@ -105,6 +111,7 @@ export default function Header() {
         </div>
 
         <div
+          id="mobile-menu"
           className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden ${
             isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
@@ -191,23 +198,23 @@ export default function Header() {
                     href="https://www.linkedin.com/in/dulanjana-dilshan-6bb13a2ba"
                     target="_blank"
                     rel="noopener noreferrer"
-                    title="LinkedIn"
+                    aria-label="Visit Dulanjana's LinkedIn profile"
                     className="p-3 rounded-full border border-purple-600 hover:bg-purple-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-600/50"
                   >
                     <Linkedin size={24} className="text-purple-400 hover:text-white" />
                   </a>
                 <a
                   href="mailto:Dulanjanassd@gmail.com"
-                  title="Email"
+                  aria-label="Send email to Dulanjana"
                   className="p-3 rounded-full border border-purple-600 hover:bg-purple-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-600/50"
                 >
                   <Mail size={24} className="text-purple-400 hover:text-white" />
                 </a>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/DulanjanaDilshan"
                   target="_blank"
                   rel="noopener noreferrer"
-                  title="GitHub"
+                  aria-label="Visit Dulanjana's GitHub profile"
                   className="p-3 rounded-full border border-purple-600 hover:bg-purple-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-600/50"
                 >
                   <Github size={24} className="text-purple-400 hover:text-white" />

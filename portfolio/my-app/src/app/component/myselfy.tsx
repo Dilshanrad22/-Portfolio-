@@ -23,10 +23,10 @@ const MyselfPage: React.FC = () => {
     { id: 2, src: "/images/01.jpeg", title: "Achievement Moment", description: "Joined WSO2 session", category: "Academic" },
     { id: 3, src: "/images/02.jpeg", title: "Conference Time", description: "AGM Leo Club of University Of Moratuwa", category: "Leo" },
     { id: 4, src: "/images/03.jpeg", title: "Achievement Moment", description: "With my amazing teammates during our university sports event", category: "Sport" },
-    { id: 5, src: "/images/04.jpeg", title: "Achivement Moment", description: "Most Outstand Director in UoM Leo club", category: "Leo" },
-    { id: 6, src: "/images/13.jpg", title: "Leadership Camp Time", description: "Most Outstand Director in UoM Leo club", category: "Leo" },
-    { id: 7, src: "/images/06.jpeg", title: "Achivement Moment", description: "Celebrating educational achievements with pride and joy", category: "Academic" },
-    { id: 8, src: "/images/08.jpeg", title: "Achivement Moment", description: "Get University Colors in 2024/2025", category: "Sport" },
+    { id: 5, src: "/images/04.jpeg", title: "Achievement Moment", description: "Most Outstanding Director in UoM Leo club", category: "Leo" },
+    { id: 6, src: "/images/13.jpg", title: "Leadership Camp Time", description: "Most Outstanding Director in UoM Leo club", category: "Leo" },
+    { id: 7, src: "/images/06.jpeg", title: "Achievement Moment", description: "Celebrating educational achievements with pride and joy", category: "Academic" },
+    { id: 8, src: "/images/08.jpeg", title: "Achievement Moment", description: "Get University Colors in 2024/2025", category: "Sport" },
     { id: 9, src: "/images/14.jpg", title: "Sasnaka Sansada Moment", description: "Did mathematics seminar in two days", category: "Education" },
     { id: 10, src: "/images/10.jpeg", title: "Team Spirit", description: "Mora Weighlifting", category: "Sport" },
     { id: 11, src: "/images/11.jpeg", title: "Personal Growth", description: "Reflecting on my journey and achievements", category: "Personal" },
@@ -120,7 +120,7 @@ const MyselfPage: React.FC = () => {
                         alt={photo.title}
                         width={320}
                         height={384}
-                        className="w- h- object-cover transition-transform duration-700 hover:scale-105"
+                        className="object-cover transition-transform duration-700 hover:scale-105"
                       />
                       
                       {/* Image Overlay */}
@@ -147,15 +147,15 @@ const MyselfPage: React.FC = () => {
             </div>
 
             {/* Navigation Arrows */}
-            <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 z-40 p-3 bg-black/50 hover:bg-purple-600/80 rounded-full border border-gray-600 hover:border-purple-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm">
+            <button onClick={prevImage} aria-label="Previous photo" className="absolute left-4 top-1/2 -translate-y-1/2 z-40 p-3 bg-black/50 hover:bg-purple-600/80 rounded-full border border-gray-600 hover:border-purple-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm">
               <ChevronLeft size={24} className="text-white" />
             </button>
-            <button onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 z-40 p-3 bg-black/50 hover:bg-purple-600/80 rounded-full border border-gray-600 hover:border-purple-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm">
+            <button onClick={nextImage} aria-label="Next photo" className="absolute right-4 top-1/2 -translate-y-1/2 z-40 p-3 bg-black/50 hover:bg-purple-600/80 rounded-full border border-gray-600 hover:border-purple-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm">
               <ChevronRight size={24} className="text-white" />
             </button>
 
             {/* Auto-play Control */}
-            <button onClick={() => setIsAutoPlay(!isAutoPlay)} className="absolute top-4 right-4 z-40 p-3 bg-black/50 hover:bg-purple-600/80 rounded-full border border-gray-600 hover:border-purple-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm">
+            <button onClick={() => setIsAutoPlay(!isAutoPlay)} aria-label={isAutoPlay ? "Pause slideshow" : "Play slideshow"} className="absolute top-4 right-4 z-40 p-3 bg-black/50 hover:bg-purple-600/80 rounded-full border border-gray-600 hover:border-purple-500 transition-all duration-300 hover:scale-110 backdrop-blur-sm">
               {isAutoPlay ? <Pause size={20} className="text-white" /> : <Play size={20} className="text-white" />}
             </button>
 
