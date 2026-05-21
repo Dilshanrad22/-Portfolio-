@@ -2,23 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Github, ExternalLink, Info } from 'lucide-react';
-
-interface Technology {
-  name: string;
-  icon: string;
-  color: string;
-}
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  technologies: Technology[];
-  liveLink: string;
-  githubLink: string;
-  category: string;
-}
+import { projects } from '../../constants/projects';
 
 const ProjectsPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -29,82 +13,6 @@ const ProjectsPage: React.FC = () => {
     }, 300);
     return () => clearTimeout(timer);
   }, []);
-
-  const projects: Project[] = [
-    {
-      id: 1,
-      title: "Travelwish Mobile app",
-      description: "Travelwish is a trip management app designed to help travelers easily plan, organize, and manage their journeys. It allows users to create itineraries, track bookings, monitor budgets, and get timely reminders, making travel more convenient and stress-free.",
-      image: "/images/travel_wish.png",
-      technologies: [
-        { name: "Flutter", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg", color: "#02569B" },
-        { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
-        { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", color: "#47A248" }
-      ],
-      liveLink: "",
-      githubLink: "",
-      category: "Mobile Application"
-    },
-    {
-      id: 2,
-      title: "Travelwish Web App",
-      description: "A web application built to help travel service providers manage and offer their services online. It enables providers to showcase travel packages, handle bookings, interact with customers, and streamline trip management in one platform, improving efficiency and customer experience.",
-      image: "/images/travel_wish.png",
-      technologies: [
-        { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", color: "#000000" },
-        { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
-        { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", color: "#47A248" },
-        { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", color: "#3178C6" }
-      ],
-      liveLink: "",
-      githubLink: "",
-      category: "Web Application"
-    },
-    {
-      id: 3,
-      title: "Mind Haven",
-      description: "Developed a full-stack web application aimed at connecting users with certified counselors and volunteer doctors for accessible mental health support. The platform includes user registration, service booking, and appointment management, along with a dedicated counselor dashboard to manage availability and sessions.",
-      image: "/images/mind_haven.png",
-      technologies: [
-        { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", color: "#000000" },
-        { name: ".NET", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg", color: "#512BD4" },
-        { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", color: "#47A248" },
-        { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg", color: "#06B6D4" }
-      ],
-      liveLink: "",
-      githubLink: "",
-      category: "Healthcare Web Application"
-    },
-    {
-      id: 4,
-      title: "Bobalicious",
-      description: "An online store developed for a bubble tea shop, enabling customers to explore flavors, customize drinks, and place orders with ease. The app features product browsing, a shopping cart, secure checkout, and order tracking. It also provides shop owners with tools to manage products, prices, and orders efficiently, boosting sales and customer engagement.",
-      image: "/images/bobalicious.jpg",
-      technologies: [
-        { name: "HTML", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", color: "#E34F26" },
-        { name: "CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg", color: "#1572B6" },
-        { name: "PHP", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg", color: "#777BB4" },
-        { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", color: "#4479A1" }
-      ],
-      liveLink: "",
-      githubLink: "",
-      category: "Web Application"
-    },
-    {
-      id: 5,
-      title: "Baby Drive",
-      description: "Educational game for children using IoT sensors and ESP32 microcontroller.",
-      image: "/images/babydrive.jpg",
-      technologies: [
-        { name: "Arduino", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg", color: "#00979D" },
-        { name: "C++", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg", color: "#00599C" },
-        { name: "IoT", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg", color: "#FF9900" }
-      ],
-      liveLink: "",
-      githubLink: "https://lnkd.in/gBKMRVZz",
-      category: "Hardware / IoT"
-    }
-  ];
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
     const target = e.target as HTMLImageElement;
@@ -119,7 +27,7 @@ const ProjectsPage: React.FC = () => {
   return (
     <div className="min-h-screen text-white py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        {/* Simple Header */}
+        {/* Header */}
         <div className={`text-center mb-16 transform transition-all duration-1000 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
         }`}>
@@ -131,7 +39,7 @@ const ProjectsPage: React.FC = () => {
           </p>
         </div>
 
-        {/* Clean Projects Grid */}
+        {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <div
@@ -141,9 +49,8 @@ const ProjectsPage: React.FC = () => {
               }`}
               style={{ transitionDelay: `${200 + index * 150}ms` }}
             >
-              {/* Simple Card Design */}
               <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden hover:border-purple-500 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-purple-500/10 group h-full flex flex-col">
-                
+
                 {/* Image Section */}
                 <div className="relative h-48 overflow-hidden">
                   <Image
@@ -155,14 +62,14 @@ const ProjectsPage: React.FC = () => {
                     onError={handleImageError}
                   />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
-                  
+
                   {/* Category Badge */}
                   <div className="absolute top-3 left-3">
                     <span className="px-3 py-1 bg-purple-600 text-white text-xs font-medium rounded-full">
                       {project.category}
                     </span>
                   </div>
-                  
+
                   {/* Live Link Overlay */}
                   {project.liveLink && (
                     <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

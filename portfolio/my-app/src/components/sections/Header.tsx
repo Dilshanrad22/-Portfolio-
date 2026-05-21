@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"
 import { Download, Linkedin, Mail, Github, Menu, X } from "lucide-react"
 import Image from "next/image"
+import { navItems, heroTitles, socialLinks } from '../../constants/navigation';
 
 export default function Header() {
   const [isVisible, setIsVisible] = useState(false)
@@ -9,14 +10,6 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState("Home")
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0)
   const [titleVisible, setTitleVisible] = useState(true)
-
-  const navItems = ["Home", "Services", "Projects", "Resume", "My selfy", "Contact"]
-  const titles = [
-    "Full stack developer",
-    "IT undergraduate",
-    "UI UX designer",
-    "Sports Enthusiast",
-  ]
 
   const scrollToSection = (sectionId: string) => {
     const id = sectionId.toLowerCase().replace(/\s+/g, '')
@@ -42,13 +35,13 @@ export default function Header() {
     const titleInterval = setInterval(() => {
       setTitleVisible(false)
       setTimeout(() => {
-        setCurrentTitleIndex((prev) => (prev + 1) % titles.length)
+        setCurrentTitleIndex((prev) => (prev + 1) % heroTitles.length)
         setTitleVisible(true)
       }, 300)
     }, 3000)
 
     return () => clearInterval(titleInterval)
-  }, [titles.length])
+  }, [])
 
   return (
     <>
@@ -173,7 +166,7 @@ export default function Header() {
                       : "opacity-0 translate-y-2"
                   }`}
                 >
-                  {titles[currentTitleIndex]}
+                  {heroTitles[currentTitleIndex]}
                 </span>
               </p>
 
@@ -194,24 +187,24 @@ export default function Header() {
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
                 }`}
               >
-                  <a
-                    href="https://www.linkedin.com/in/dulanjana-dilshan-6bb13a2ba"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Visit Dulanjana's LinkedIn profile"
-                    className="p-3 rounded-full border border-purple-600 hover:bg-purple-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-600/50"
-                  >
-                    <Linkedin size={24} className="text-purple-400 hover:text-white" />
-                  </a>
                 <a
-                  href="mailto:Dulanjanassd@gmail.com"
+                  href={socialLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Dulanjana's LinkedIn profile"
+                  className="p-3 rounded-full border border-purple-600 hover:bg-purple-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-600/50"
+                >
+                  <Linkedin size={24} className="text-purple-400 hover:text-white" />
+                </a>
+                <a
+                  href={socialLinks.email}
                   aria-label="Send email to Dulanjana"
                   className="p-3 rounded-full border border-purple-600 hover:bg-purple-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-600/50"
                 >
                   <Mail size={24} className="text-purple-400 hover:text-white" />
                 </a>
                 <a
-                  href="https://github.com/DulanjanaDilshan"
+                  href={socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Visit Dulanjana's GitHub profile"
@@ -232,22 +225,20 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Right Content - Static Profile Image Only */}
+            {/* Right Content */}
             <div className="order-1 lg:order-2 flex justify-center lg:justify-start lg:pl-12">
               <div
                 className={`relative transform transition-all duration-1000 delay-200 ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
                 }`}
               >
-                {/* Profile Image - No animation, larger for desktop */}
                 <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 xl:w-[30rem] xl:h-[30rem] rounded-full overflow-visible lg:ml-20">
-                  {/* Glowing radial light behind the profile image */}
                   <div className="absolute inset-0 flex items-center justify-center -z-10">
                     <span className="glow-radial w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-[28rem] xl:h-[28rem] rounded-full" aria-hidden="true"></span>
                   </div>
                   <div className="relative rounded-full overflow-hidden border-4 border-purple-600/50 hover:scale-105 transition-transform duration-500 hover:shadow-2xl hover:shadow-purple-600/50 animate-float w-full h-full">
                     <Image
-                      src="/images/propic.png"
+                      src="/images/profile/propic.png"
                       alt="Dulanjana Dilshan"
                       width={800}
                       height={800}

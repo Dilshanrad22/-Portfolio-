@@ -1,12 +1,12 @@
 
 'use client';
 
-import Header from './component/header';
-import ServicesSection from './component/ServicesSection';
-import ProjectsPage from './component/projects';
-import Resume from './component/resume';
-import Myselfy from './component/myselfy';
-import Contact from './component/contact';
+import Header from '../components/sections/Header';
+import ServicesSection from '../components/sections/ServicesSection';
+import ProjectsPage from '../components/sections/Projects';
+import Resume from '../components/sections/Resume';
+import Myselfy from '../components/sections/Myselfy';
+import Contact from '../components/sections/Contact';
 
 
 export default function Home() {

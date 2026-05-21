@@ -2,14 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Play, Pause, Heart, Camera } from 'lucide-react';
 import Image from "next/image";
-
-interface Photo {
-  id: number;
-  src: string;
-  title: string;
-  description: string;
-  category: string;
-}
+import type { Photo } from '../../types';
 
 const MyselfPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -17,20 +10,19 @@ const MyselfPage: React.FC = () => {
   const [isAutoPlay, setIsAutoPlay] = useState<boolean>(true);
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  // Photos array should be defined before useEffect
   const photos: Photo[] = [
-    { id: 1, src: "/images/07.jpeg", title: "My Achievements", description: "With my amazing teammates during our university sports event", category: "Sports" },
-    { id: 2, src: "/images/01.jpeg", title: "Achievement Moment", description: "Joined WSO2 session", category: "Academic" },
-    { id: 3, src: "/images/02.jpeg", title: "Conference Time", description: "AGM Leo Club of University Of Moratuwa", category: "Leo" },
-    { id: 4, src: "/images/03.jpeg", title: "Achievement Moment", description: "With my amazing teammates during our university sports event", category: "Sport" },
-    { id: 5, src: "/images/04.jpeg", title: "Achievement Moment", description: "Most Outstanding Director in UoM Leo club", category: "Leo" },
-    { id: 6, src: "/images/13.jpg", title: "Leadership Camp Time", description: "Most Outstanding Director in UoM Leo club", category: "Leo" },
-    { id: 7, src: "/images/06.jpeg", title: "Achievement Moment", description: "Celebrating educational achievements with pride and joy", category: "Academic" },
-    { id: 8, src: "/images/08.jpeg", title: "Achievement Moment", description: "Get University Colors in 2024/2025", category: "Sport" },
-    { id: 9, src: "/images/14.jpg", title: "Sasnaka Sansada Moment", description: "Did mathematics seminar in two days", category: "Education" },
-    { id: 10, src: "/images/10.jpeg", title: "Team Spirit", description: "Mora Weighlifting", category: "Sport" },
-    { id: 11, src: "/images/11.jpeg", title: "Personal Growth", description: "Reflecting on my journey and achievements", category: "Personal" },
-    { id: 12, src: "/images/12.jpeg", title: "Team work", description: "Academic presentation group", category: "Academic" },
+    { id: 1,  src: "/images/gallery/07.jpeg", title: "My Achievements",          description: "With my amazing teammates during our university sports event", category: "Sports"   },
+    { id: 2,  src: "/images/gallery/01.jpeg", title: "Achievement Moment",       description: "Joined WSO2 session",                                         category: "Academic" },
+    { id: 3,  src: "/images/gallery/02.jpeg", title: "Conference Time",          description: "AGM Leo Club of University Of Moratuwa",                      category: "Leo"      },
+    { id: 4,  src: "/images/gallery/03.jpeg", title: "Achievement Moment",       description: "With my amazing teammates during our university sports event", category: "Sport"    },
+    { id: 5,  src: "/images/gallery/04.jpeg", title: "Achievement Moment",       description: "Most Outstanding Director in UoM Leo club",                   category: "Leo"      },
+    { id: 6,  src: "/images/gallery/13.jpg",  title: "Leadership Camp Time",     description: "Most Outstanding Director in UoM Leo club",                   category: "Leo"      },
+    { id: 7,  src: "/images/gallery/06.jpeg", title: "Achievement Moment",       description: "Celebrating educational achievements with pride and joy",      category: "Academic" },
+    { id: 8,  src: "/images/gallery/08.jpeg", title: "Achievement Moment",       description: "Get University Colors in 2024/2025",                          category: "Sport"    },
+    { id: 9,  src: "/images/gallery/14.jpg",  title: "Sasnaka Sansada Moment",   description: "Did mathematics seminar in two days",                         category: "Education"},
+    { id: 10, src: "/images/gallery/10.jpeg", title: "Team Spirit",              description: "Mora Weighlifting",                                           category: "Sport"    },
+    { id: 11, src: "/images/gallery/11.jpeg", title: "Personal Growth",          description: "Reflecting on my journey and achievements",                   category: "Personal" },
+    { id: 12, src: "/images/gallery/12.jpeg", title: "Team work",                description: "Academic presentation group",                                 category: "Academic" },
   ];
 
   useEffect(() => {
@@ -40,7 +32,6 @@ const MyselfPage: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Auto-play slideshow
   useEffect(() => {
     if (!isAutoPlay || isHovered) return;
 
@@ -49,7 +40,7 @@ const MyselfPage: React.FC = () => {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlay, isHovered, photos.length]); // ✅ fixed dependency
+  }, [isAutoPlay, isHovered, photos.length]);
 
   const nextImage = () => setCurrentImageIndex((prev) => (prev + 1) % photos.length);
   const prevImage = () => setCurrentImageIndex((prev) => (prev - 1 + photos.length) % photos.length);
@@ -79,9 +70,9 @@ const MyselfPage: React.FC = () => {
         <div className={`relative transform transition-all duration-1000 ease-out ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
         }`} style={{ transitionDelay: '400ms' }}>
-          
+
           {/* 3D Perspective Container */}
-          <div 
+          <div
             className="relative h-[70vh] perspective-1000"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -101,9 +92,9 @@ const MyselfPage: React.FC = () => {
                     }`}
                     style={{
                       transform: `
-                        translateX(${position * 200}px) 
-                        translateZ(${position === 0 ? 0 : -200}px) 
-                        rotateY(${position * 25}deg) 
+                        translateX(${position * 200}px)
+                        translateZ(${position === 0 ? 0 : -200}px)
+                        rotateY(${position * 25}deg)
                         scale(${position === 0 ? 1 : 0.8})
                       `,
                       opacity: Math.abs(position) > 2 ? 0 : position === 0 ? 1 : 0.6
@@ -111,8 +102,8 @@ const MyselfPage: React.FC = () => {
                     onClick={() => position !== 0 && goToImage(index)}
                   >
                     <div className={`relative rounded-2xl overflow-hidden border-4 transition-all duration-500 ${
-                      position === 0 
-                        ? 'border-purple-500 shadow-2xl shadow-purple-500/30' 
+                      position === 0
+                        ? 'border-purple-500 shadow-2xl shadow-purple-500/30'
                         : 'border-gray-600/50 hover:border-purple-400/70'
                     }`}>
                       <Image
@@ -122,7 +113,7 @@ const MyselfPage: React.FC = () => {
                         height={384}
                         className="object-cover transition-transform duration-700 hover:scale-105"
                       />
-                      
+
                       {/* Image Overlay */}
                       <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent transition-opacity duration-500 ${
                         position === 0 ? 'opacity-100' : 'opacity-0'
@@ -175,8 +166,8 @@ const MyselfPage: React.FC = () => {
                 key={photo.id}
                 onClick={() => goToImage(index)}
                 className={`relative w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 hover:scale-110 ${
-                  index === currentImageIndex 
-                    ? 'border-purple-500 shadow-lg shadow-purple-500/50' 
+                  index === currentImageIndex
+                    ? 'border-purple-500 shadow-lg shadow-purple-500/50'
                     : 'border-gray-600 hover:border-purple-400'
                 }`}
               >
@@ -197,7 +188,7 @@ const MyselfPage: React.FC = () => {
           {/* Progress Bar */}
           <div className="mt-8 mx-auto max-w-md">
             <div className="w-full bg-gray-800 rounded-full h-1 overflow-hidden">
-              <div 
+              <div
                 className="h-full bg-gradient-to-r from-purple-500 to-purple-400 rounded-full transition-all duration-300"
                 style={{ width: `${((currentImageIndex + 1) / photos.length) * 100}%` }}
               ></div>
@@ -209,13 +200,6 @@ const MyselfPage: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Custom CSS for 3D perspective */}
-      <style jsx>{`
-        .perspective-1000 {
-          perspective: 1000px;
-        }
-      `}</style>
     </div>
   );
 };
