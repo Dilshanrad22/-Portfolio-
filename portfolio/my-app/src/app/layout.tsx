@@ -25,20 +25,20 @@ export const metadata: Metadata = {
     description: "Portfolio of Dulanjana Dilshan — Full Stack Developer, IT undergraduate, and UI/UX designer.",
     url: "https://dulanjanadilshan.vercel.app",
     siteName: "Dulanjana Dilshan Portfolio",
-    images: [{ url: "/images/propic.png", width: 800, height: 800, alt: "Dulanjana Dilshan" }],
+    images: [{ url: "/images/profile/propic.png", width: 800, height: 800, alt: "Dulanjana Dilshan" }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Dulanjana Dilshan | Full Stack Developer",
     description: "Portfolio of Dulanjana Dilshan — Full Stack Developer, IT undergraduate, and UI/UX designer.",
-    images: ["/images/propic.png"],
+    images: ["/images/profile/propic.png"],
   },
   verification: {
     google: "QAdMGf3dlQduPQGzDkYAKz7h8_x9u5V8x8KGwqIRjCI",
   },
   icons: {
-    icon: "/images/propic.png",
+    icon: "/images/profile/propic.png",
   },
 };
 
@@ -52,7 +52,7 @@ export default function RootLayout({
     "@type": "Person",
     name: "Dulanjana Dilshan",
     url: "https://dulanjanadilshan.vercel.app",
-    image: "https://dulanjanadilshan.vercel.app/images/propic.png",
+    image: "https://dulanjanadilshan.vercel.app/images/profile/propic.png",
     jobTitle: "Full Stack Developer",
     description: "IT undergraduate at University of Moratuwa specialising in Software Engineering and Web Development.",
     sameAs: [

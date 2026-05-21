@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Github, ExternalLink, Info } from 'lucide-react';
+
 import { projects } from '../../constants/projects';
 
 const ProjectsPage: React.FC = () => {
@@ -119,10 +120,23 @@ const ProjectsPage: React.FC = () => {
 
                   {/* Action Buttons */}
                   <div className="flex gap-3 mt-auto">
-                    <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-lg transition-colors duration-200">
-                      <Info size={16} />
-                      <span className="text-sm">Learn More</span>
-                    </button>
+                    {project.liveLink ? (
+                      <a
+                        href={project.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors duration-200"
+                        aria-label={`View live site for ${project.title}`}
+                      >
+                        <ExternalLink size={16} />
+                        <span className="text-sm font-medium">Live Site</span>
+                      </a>
+                    ) : (
+                      <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-lg transition-colors duration-200">
+                        <Info size={16} />
+                        <span className="text-sm">Coming Soon</span>
+                      </button>
+                    )}
                     {project.githubLink && (
                       <a
                         href={project.githubLink}

@@ -263,7 +263,7 @@ const ContactPage: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Chat on WhatsApp"
-                  className="flex-1 py-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:shadow-green-600/50 flex items-center justify-center gap-3"
+                  className="flex-1 py-4 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:shadow-purple-700/50 flex items-center justify-center gap-3"
                 >
                   <WhatsAppIcon />
                   Chat on WhatsApp
@@ -316,8 +316,8 @@ const ContactPage: React.FC = () => {
             </div>
 
             {/* WhatsApp */}
-            <div className="flex items-start gap-4 p-6 bg-gradient-to-br from-gray-900/80 to-gray-800/60 backdrop-blur-lg rounded-2xl border border-gray-700/50 hover:border-green-500/50 transition-all duration-500 transform hover:-translate-y-1">
-              <div className="flex-shrink-0 w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+            <div className="flex items-start gap-4 p-6 bg-gradient-to-br from-gray-900/80 to-gray-800/60 backdrop-blur-lg rounded-2xl border border-gray-700/50 hover:border-purple-500/50 transition-all duration-500 transform hover:-translate-y-1">
+              <div className="flex-shrink-0 w-12 h-12 bg-purple-700 rounded-full flex items-center justify-center">
                 <WhatsAppIcon />
               </div>
               <div>
@@ -326,7 +326,7 @@ const ContactPage: React.FC = () => {
                   href="https://wa.me/94717646067?text=Hi%20Dulanjana%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect!"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-green-400 transition-colors duration-300"
+                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
                 >
                   (+94) 71 764 6067
                 </a>
