@@ -1,46 +1,9 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Calendar, MapPin, Award, Users, Trophy, Star, Briefcase } from 'lucide-react';
-
-interface Skill {
-  name: string;
-  icon: string;
-}
-
-interface SkillCategory {
-  title: string;
-  skills: Skill[];
-}
-
-interface Education {
-  id: number;
-  degree: string;
-  institution: string;
-  duration: string;
-  logo: string;
-  description: string;
-  gpa?: string;
-}
-
-interface Experience {
-  id: number;
-  title: string;
-  company: string;
-  duration: string;
-  type: string;
-  description: string;
-  technologies: string[];
-}
-
-interface Activity {
-  id: number;
-  title: string;
-  organization: string;
-  description: string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
-  color: string;
-}
+import { Calendar, MapPin, Briefcase } from 'lucide-react';
+import { skillCategories } from '../../constants/skills';
+import { education, experiences, activities } from '../../constants/experience';
 
 const ResumePage: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -49,171 +12,6 @@ const ResumePage: React.FC = () => {
     const timer = setTimeout(() => setIsVisible(true), 300);
     return () => clearTimeout(timer);
   }, []);
-
-  const experiences: Experience[] = [
-    {
-      id: 1,
-      title: "Software Engineering Intern",
-      company: "Scienter Technologies (Pvt) Ltd",
-      duration: "2025 - Present",
-      type: "Internship · Mobile Development",
-      description: "Developing cross-platform mobile applications using React Native. Working with Redux Toolkit for state management and collaborating with the engineering team to build scalable, production-ready mobile solutions.",
-      technologies: ["React Native", "Redux", "Redux Toolkit", "JavaScript", "TypeScript"]
-    }
-  ];
-
-  const skillCategories: SkillCategory[] = [
-    {
-      title: "Languages",
-      skills: [
-        { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-        { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-        { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
-        { name: "C", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
-        { name: "Dart", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" }
-      ]
-    },
-    {
-      title: "Frontend & Mobile",
-      skills: [
-        { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-        { name: "React Native", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-        { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-        { name: "Flutter", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
-        { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-        { name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
-        { name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" }
-      ]
-    },
-    {
-      title: "State Management",
-      skills: [
-        { name: "Redux", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" },
-        { name: "Redux Toolkit", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" },
-        { name: "Zustand", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" }
-      ]
-    },
-    {
-      title: "Backend",
-      skills: [
-        { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-        { name: "Express.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" }
-      ]
-    },
-    {
-      title: "Database",
-      skills: [
-        { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
-        { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" }
-      ]
-    },
-    {
-      title: "Tools",
-      skills: [
-        { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-        { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
-        { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" }
-      ]
-    },
-    {
-      title: "AI Tools",
-      skills: [
-        { name: "Claude Code",    icon: "https://cdn.simpleicons.org/claude/ffffff" },
-        { name: "ChatGPT",        icon: "https://cdn.simpleicons.org/openai/ffffff" },
-        { name: "Codex",          icon: "https://cdn.simpleicons.org/openai/ffffff" },
-        { name: "Gemini",         icon: "https://cdn.simpleicons.org/googlegemini/ffffff" },
-        { name: "Perplexity",     icon: "https://cdn.simpleicons.org/perplexity/ffffff" },
-        { name: "Google Stitch",  icon: "https://cdn.simpleicons.org/google/ffffff" },
-        { name: "GitHub Copilot", icon: "https://cdn.simpleicons.org/githubcopilot/ffffff" }
-      ]
-    }
-  ];
-
-  const education: Education[] = [
-    {
-      id: 1,
-      degree: "Bachelor of Science Honours in Information Technology",
-      institution: "University of Moratuwa",
-      duration: "2023 - 2027",
-      logo: "/images/uom.png",
-      description: "Specialized in Software Engineering and Web Development"
-    },
-    {
-      id: 2,
-      degree: "Advanced Level in Physical Science",
-      institution: "Rahula College Matara",
-      duration: "2019 - 2022",
-      logo: "/images/rcm.png",
-      description: "Mathematics, Physics, Chemistry - A & 2B passes"
-    },
-    {
-      id: 3,
-      degree: "Ordinary Level",
-      institution: "Kokawala Central College",
-      duration: "2007 - 2019",
-      logo: "/images/kcc.jpg",
-      description: "8A & 1B passes including Mathematics, Science, and English"
-    }
-  ];
-
-  const activities: Activity[] = [
-    {
-      id: 1,
-      title: "Director of Youth Empowerment",
-      organization: "Leo Club University of Moratuwa 2024/2025",
-      description: "Leading youth empowerment initiatives and community development programs",
-      icon: Users,
-      color: "from-purple-600 to-purple-800"
-    },
-    {
-      id: 2,
-      title: "Chief Activity Coordinator",
-      organization: "Leo Club University of Moratuwa",
-      description: "Coordinating and managing club activities and community service projects",
-      icon: Award,
-      color: "from-purple-500 to-purple-700"
-    },
-    {
-      id: 3,
-      title: "Member of Athletic Club",
-      organization: "University of Moratuwa",
-      description: "Active participant in university athletic programs and sports activities",
-      icon: Trophy,
-      color: "from-purple-400 to-purple-600"
-    },
-    {
-      id: 4,
-      title: "Player of the Weight Lifting Team",
-      organization: "University of Moratuwa Weight Lifting Club",
-      description: "I am playing Right Winger position of the Weight Lifting Team",
-      icon: Trophy,
-      color: "from-purple-400 to-purple-600"
-    },
-    {
-      id: 5,
-      title: "Member of the Wrestling Team",
-      organization: "University Sports Club",
-      description: "Active member in training and competitions",
-      icon: Star,
-      color: "from-purple-500 to-purple-700"
-    },
-    {
-      id: 6,
-      title: "Tech Community Volunteer",
-      organization: "Developer Students Club",
-      description: "Organizing workshops and mentoring junior students",
-      icon: Users,
-      color: "from-purple-300 to-purple-500"
-    },
-    {
-      id: 7,
-      title: "Hackathon Participant",
-      organization: "Various Tech Events",
-      description: "Participated in multiple hackathons and coding competitions",
-      icon: Star,
-      color: "from-purple-600 to-purple-800"
-    }
-  ];
 
   return (
     <div className="min-h-screen text-white py-20 px-6">
@@ -229,35 +27,30 @@ const ResumePage: React.FC = () => {
         {/* Skills Section */}
         <div className={`mb-20 transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`} style={{ transitionDelay: '400ms' }}>
           <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 bg-clip-text text-transparent">My Skills</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {skillCategories.map((category, categoryIndex) => (
-              <div 
-                key={categoryIndex} 
+              <div
+                key={categoryIndex}
                 className="group relative overflow-hidden"
                 style={{ transitionDelay: `${categoryIndex * 200}ms` }}
               >
-                {/* Category Card */}
                 <div className="relative bg-gradient-to-br from-slate-900/90 to-gray-900/90 backdrop-blur-sm border border-slate-700/50 rounded-lg p-8 hover:border-purple-500/50 hover:bg-gradient-to-br hover:from-slate-800/90 hover:to-gray-800/90 transition-all duration-500 group-hover:transform group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-purple-500/20">
-                  
-                  {/* Subtle glow effect */}
+
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
-                  {/* Category Title */}
+
                   <div className="relative z-10 mb-8">
                     <h3 className="text-2xl font-bold text-white mb-2">{category.title}</h3>
                     <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full group-hover:w-24 transition-all duration-500"></div>
                   </div>
-                  
-                  {/* Skills Grid */}
+
                   <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {category.skills.map((skill, skillIndex) => (
-                      <div 
+                      <div
                         key={skillIndex}
                         className="group/skill relative p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl hover:bg-white/15 hover:border-purple-400/60 transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-500/25"
                         style={{ transitionDelay: `${skillIndex * 100}ms` }}
                       >
-                        {/* Skill Icon */}
                         <div className="relative z-10 flex flex-col items-center">
                           <div className="w-14 h-14 mb-4 flex items-center justify-center rounded-lg bg-gradient-to-br from-white/20 to-white/10 group-hover/skill:from-purple-500/30 group-hover/skill:to-purple-600/30 transition-all duration-400 group-hover/skill:scale-110">
                             <Image
@@ -273,13 +66,11 @@ const ResumePage: React.FC = () => {
                             {skill.name}
                           </span>
                         </div>
-                        
-                        {/* Modern glow effect */}
+
                         <div className="absolute inset-0 rounded-xl opacity-0 group-hover/skill:opacity-100 transition-opacity duration-500 -z-10">
                           <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-purple-600/20 rounded-xl blur-lg"></div>
                         </div>
-                        
-                        {/* Subtle border glow */}
+
                         <div className="absolute inset-0 rounded-xl opacity-0 group-hover/skill:opacity-100 transition-opacity duration-500">
                           <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-400/30 via-pink-400/30 to-purple-400/30 p-[1px]">
                             <div className="w-full h-full rounded-xl bg-transparent"></div>
@@ -289,8 +80,7 @@ const ResumePage: React.FC = () => {
                     ))}
                   </div>
                 </div>
-                
-                {/* Clean minimal effect */}
+
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-purple-600/5 rounded-lg"></div>
                 </div>
@@ -304,7 +94,7 @@ const ResumePage: React.FC = () => {
           <h2 className="text-3xl font-bold text-center mb-12">My Education</h2>
           <div className="space-y-6">
             {education.map((edu, index) => (
-              <div key={edu.id} className={`group relative bg-gradient-to-br from-gray-900/80 to-gray-800/60 backdrop-blur-lg rounded-2xl border border-gray-700/50 p-6 hover:border-purple-500/50 transition-all duration-500 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/20`} style={{ transitionDelay: `${index * 200}ms` }}>
+              <div key={edu.id} className="group relative bg-gradient-to-br from-gray-900/80 to-gray-800/60 backdrop-blur-lg rounded-2xl border border-gray-700/50 p-6 hover:border-purple-500/50 transition-all duration-500 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/20" style={{ transitionDelay: `${index * 200}ms` }}>
                 <div className="flex items-center gap-6">
                   <div className="flex-shrink-0">
                     <div className="w-20 h-20 rounded-full bg-gray-800/50 border border-gray-600/30 flex items-center justify-center overflow-hidden group-hover:border-purple-500/50 transition-all duration-300">
@@ -352,13 +142,11 @@ const ResumePage: React.FC = () => {
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
                 <div className="flex items-start gap-6">
-                  {/* Icon */}
                   <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center shadow-lg shadow-purple-600/30">
                     <Briefcase size={24} className="text-white" />
                   </div>
 
                   <div className="flex-grow">
-                    {/* Title row */}
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-1">
                       <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors duration-300">
                         {exp.title}
@@ -369,7 +157,6 @@ const ResumePage: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Company + type */}
                     <div className="flex flex-wrap items-center gap-3 mb-3">
                       <div className="flex items-center gap-1">
                         <MapPin size={14} className="text-gray-400" />
@@ -384,7 +171,6 @@ const ResumePage: React.FC = () => {
                       {exp.description}
                     </p>
 
-                    {/* Tech tags */}
                     <div className="flex flex-wrap gap-2">
                       {exp.technologies.map((tech) => (
                         <span
@@ -398,7 +184,6 @@ const ResumePage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Glow */}
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-purple-600/5 rounded-2xl"></div>
                 </div>

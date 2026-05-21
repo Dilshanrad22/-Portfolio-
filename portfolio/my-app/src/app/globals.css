@@ -159,6 +159,19 @@ body {
   }
 }
 
+/* ── ServicesSection animations ── */
+@keyframes gradient-shift { 0%,100%{background-position:0% 50%}50%{background-position:100% 50%} }
+@keyframes pulse-soft { 0%,100%{opacity:0.1;transform:scale(1);}50%{opacity:0.2;transform:scale(1.02);} }
+@keyframes border-flow { 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
+@keyframes text-shimmer { 0%,100%{background-position:0% 50%}50%{background-position:100% 50%} }
+.animate-gradient-shift { background-size:200% 200%; animation:gradient-shift 8s ease infinite; }
+.animate-pulse-soft { animation:pulse-soft 4s ease-in-out infinite; }
+.animate-border-flow { background-size:200% 200%; animation:border-flow 3s linear infinite; }
+.animate-text-shimmer { background-size:200% 200%; animation:text-shimmer 6s ease-in-out infinite; }
+
+/* ── Myselfy carousel 3D ── */
+.perspective-1000 { perspective: 1000px; }
+
 .panel-1 { animation: panel-float-1 15s ease-in-out infinite; }
 .panel-2 { animation: panel-float-2 18s ease-in-out infinite; }
 .panel-3 { animation: panel-float-3 12s ease-in-out infinite; }
